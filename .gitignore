@@ -1,0 +1,13 @@
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.pyc
+
+# Unit test / coverage reports
+.tox/
+
+# Environments
+.venv
+venv/
+venv.bak/

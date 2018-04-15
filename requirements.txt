@@ -1,0 +1,2 @@
+hypothesis>=3.55.1
+sphinx>=1.7.2
