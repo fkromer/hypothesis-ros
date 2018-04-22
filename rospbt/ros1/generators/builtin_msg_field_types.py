@@ -57,6 +57,16 @@ UINT64_MIN_VALUE = 0
 UINT64_MAX_VALUE = 18446744073709551615
 """long: Maximal UInt64 value (2^64 − 1)."""
 
+FLOAT32_MIN_VALUE = -3.4e+38
+"""float: Minimal Float32 value (-3.4E+38)."""
+FLOAT32_MAX_VALUE = +3.4e+38
+"""float: Maximal Float32 value (+3.4E+38)."""
+
+FLOAT64_MIN_VALUE = -1.7E+308
+"""float: Minimal Float32 value (-1.7E+308)."""
+FLOAT64_MAX_VALUE = +1.7E+308
+"""float: Maximal Float32 value (+1.7E+308)."""
+
 
 def bool():
     """
@@ -221,3 +231,57 @@ def uint64(min_value=UINT64_MIN_VALUE, max_value=UINT64_MAX_VALUE):
         Strategy with preconfigured default values.
     """
     return integers(min_value, max_value)
+
+
+def float32(min_value=FLOAT32_MIN_VALUE, max_value=FLOAT32_MAX_VALUE, allow_nan=False, allow_infinity=False):
+    """
+    Generates and shrinks values for ROS builtin message type "float32".
+
+    TODO: Map Hypothesis values to YAML [.inf, -.Inf, .NAN].
+          http://www.yaml.org/refcard.html
+
+    Parameters
+    ----------
+    min_value : int
+        Minimal value to generate.
+    max_value : int
+        Maximal value to generate.
+    allow_nan : boolean
+        Generate "not a number"? (Default: false)
+    allow_infinity : boolean
+        Generate "not a number"? (Default: false)
+
+    Returns
+    -------
+    hypothesis.strategies.floats()
+        Strategy with preconfigured default values.
+    """
+    return floats(min_value, max_value, allow_nan, allow_infinity)
+
+
+def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE, allow_nan=False, allow_infinity=False):
+    """
+    Generates and shrinks values for ROS builtin message type "float64".
+
+    TODO: Restrict value range.
+
+    TODO: Map Hypothesis values to YAML [.inf, -.Inf, .NAN].
+          http://www.yaml.org/refcard.html
+
+    Parameters
+    ----------
+    min_value : int
+        Minimal value to generate.
+    max_value : int
+        Maximal value to generate.
+    allow_nan : boolean
+        Generate "not a number"? (Default: false)
+    allow_infinity : boolean
+        Generate "not a number"? (Default: false)
+
+    Returns
+    -------
+    hypothesis.strategies.floats()
+        Strategy with preconfigured default values.
+    """
+    return floats(min_value, max_value, allow_nan, allow_infinity)
