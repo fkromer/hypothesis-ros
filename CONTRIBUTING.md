@@ -8,7 +8,10 @@ If you have improvements to `rospbt`, send your pull requests! For those
 just getting started, Github has a
 [howto "using pull requests"](https://help.github.com/articles/using-pull-requests/).
 
-Your pull requests will be reviewed. Please create an issue about your future pull
+It's important to make sure that you own the rights to the work you are want to
+pull request. If it is done on work time, or you have a particularly onerous
+contract, make sure you've checked with your employer. Your pull requests will
+be reviewed. Please create an issue about your future pull
 request that others know that you are working on it and to avoid dublicate effort.
 Once the pull requests are approved and pass continuous integration checks, the
 pull requests will be merged. Please squash all commits in a pull request into a
@@ -39,7 +42,8 @@ tests.
 
 There are no best practices for testing custom Hypothesis strategies
 [(hypothesis developer answer on stackoverflow](https://stackoverflow.com/a/49683721/5308983).
-(Due to the nature of strategies it makes not sense as well.) For everything else:
+However to verify strategy customizeation and for documentation purposes it may
+make sense to implement tests. For code other than strategy related one:
 Please provide tests to (a) prove that your code works correctly, and b) guard
 against future breaking changes. Please use `pytest` as test framework/runner.
 In case you want pull request "property based tests" please use `Hypothesis`.
@@ -54,9 +58,20 @@ For information about the compatibility of semantic versioning with the Python
 PEP specification refer to
 [PEP 440 -- Version Identification and Dependency Specification (Semantic versioning)](https://www.python.org/dev/peps/pep-0440/#id48].
 
+#### Copyright
+
+Copyright (c) 2018, Florian Kromer
+
+Have a look into the list of contributors for a full list of people who may hold
+copyright, and consult the git log if you need to determine who owns an individual
+contribution.
+
 #### License
 
-Do not include any license other than MIT. Adding a new license should not be
+All work is licensed under the terms of GPL-v3.0. By submitting a contribution
+you are agreeing to licence your work under those terms.
+
+Do not include any license other than GPL-v3.0. Adding a new license should not be
 required anyway (because already existing).
 
 #### Python coding style
@@ -77,15 +92,20 @@ those just getting started, there is a section
 Please run the following [`tox`](https://github.com/tox-dev/tox) environments before
 creating a pull request:
 
-- `lint`: Static analysis with `pylint`
+- `tests`: Tests run with `pytest` test runner.
+- `lint`: Static analysis with `pylint`.
 - `code_style`: Code style checks.
 - `docs_style`: Docstring style checks.
 - `docs`: Sphinx documentation integrity checks. (The cocumentation resides in `/.tox/docs/tmp/html`.)
 
-
+    tox -e tests
     tox -e lint
     tox -e code_style
     tox -e docs_style
     tox -e docs
 
 In case you add tests feel free to add a new environment `[testenv:test]` to `tox.ini`.
+
+## Contributors
+
+- Florian Kromer /  [fkromer](https://github.com/fkromer) / florian-kromer@mailbox.org
