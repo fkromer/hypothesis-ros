@@ -3,7 +3,7 @@ ROS node level property based testing.
 
 ## Installation
 
-    ❯ pip install .
+    ❯ pip install git+https://github.com/fkromer/rospbt
 
 ## Usage
 
