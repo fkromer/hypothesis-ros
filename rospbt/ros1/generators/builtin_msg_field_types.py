@@ -15,7 +15,8 @@ message field types which are usable in both, ROS1 and ROS2
 
 """
 
-from hypothesis.strategies import booleans, floats, integers
+import datetime
+from hypothesis.strategies import booleans, datetimes, floats, integers
 
 INT8_MIN_VALUE = -128
 """int: Minimal Int8 value (−1 × 2^7)."""
@@ -67,6 +68,10 @@ FLOAT64_MIN_VALUE = -1.7E+308
 FLOAT64_MAX_VALUE = +1.7E+308
 """float: Maximal Float32 value (+1.7E+308)."""
 
+DATE_MIN_VALUE = datetime.datetime(datetime.MINYEAR, 1, 1, 0, 0)
+"""date: Minimal ISO8601 Date value (0001-01-01 00:00:00)."""
+DATE_MAX_VALUE = datetime.datetime(datetime.MAXYEAR, 12, 31, 23, 59)
+"""date: Maximal ISO8601 Date value (9999-12-31 23:59:00)."""
 
 def bool():
     """
@@ -285,3 +290,22 @@ def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE, allow_nan=
         Strategy with preconfigured default values.
     """
     return floats(min_value, max_value, allow_nan, allow_infinity)
+
+
+def date(min_value=DATE_MIN_VALUE, max_value=DATE_MAX_VALUE):
+    """
+    Generates and shrinks values for ROS builtin message type "date".
+
+    Parameters
+    ----------
+    min_value : datetime.datetime
+        Minimal value to generate.
+    max_value : datetime.datetime
+        Maximal value to generate.
+
+    Returns
+    -------
+    hypothesis.strategies.datetimes()
+        Strategy with values taken from datetime library.
+    """
+    return datetimes(min_value, max_value)
