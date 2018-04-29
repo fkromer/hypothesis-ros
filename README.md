@@ -1,4 +1,7 @@
 # rospbt
+
+[![Build Status](https://travis-ci.org/fkromer/rospbt.svg?branch=master)](https://travis-ci.org/fkromer/rospbt)
+
 ROS node level property based testing.
 
 ## Installation
