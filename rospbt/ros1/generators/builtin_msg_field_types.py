@@ -296,9 +296,6 @@ def date(min_value=DATE_MIN_VALUE, max_value=DATE_MAX_VALUE):
     """
     Generates and shrinks values for ROS builtin message type "date".
 
-    TODO: Map Hypothesis values to YAML [.inf, -.Inf, .NAN].
-          http://www.yaml.org/refcard.html
-
     Parameters
     ----------
     min_value : datetime.datetime
