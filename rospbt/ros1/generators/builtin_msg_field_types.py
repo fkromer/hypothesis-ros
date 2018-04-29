@@ -18,45 +18,45 @@ message field types which are usable in both, ROS1 and ROS2
 import datetime
 from hypothesis.strategies import booleans, datetimes, floats, integers
 
-INT8_MIN_VALUE = -128
-"""int: Minimal Int8 value (−1 × 2^7)."""
-INT8_MAX_VALUE = 127
+INT8_MIN_VALUE = -1 * 2 ^ 7
+"""int: Minimal Int8 value (-1 * 2^7)."""
+INT8_MAX_VALUE = 2 ^ 7 - 1
 """int: Maximal Int8 value (2^7 - 1)."""
 
 UINT8_MIN_VALUE = 0
-"""int: Maximal UInt8 value."""
-UINT8_MAX_VALUE = 255
+"""int: Maximal UInt8 value (0)."""
+UINT8_MAX_VALUE = 2 ^ 8 - 1
 """int: Maximal UInt8 value (2^8 - 1)."""
 
-INT16_MIN_VALUE = -32768
-"""int: Minimal Int16 value (−1 × 2^15)."""
-INT16_MAX_VALUE = 32767
-"""int: Maximal Int16 value (2^15 − 1)."""
+INT16_MIN_VALUE = -1 * 2 ^ 15
+"""int: Minimal Int16 value (-1 * 2^15)."""
+INT16_MAX_VALUE = 2 ^ 15 - 1
+"""int: Maximal Int16 value (2^15 - 1)."""
 
 UINT16_MIN_VALUE = 0
-"""int: Minimal UInt16 value."""
-UINT16_MAX_VALUE = 65535
-"""int: Maximal UInt16 value (2^16 − 1)."""
+"""int: Minimal UInt16 value (0)."""
+UINT16_MAX_VALUE = 2 ^ 16 - 1
+"""int: Maximal UInt16 value (2^16 - 1)."""
 
-INT32_MIN_VALUE = -2147483648
-"""int: Minimal Int32 value (−1 x 2^31)."""
-INT32_MAX_VALUE = 2147483647
-"""int: Maximal Int32 value (2^31 − 1)."""
+INT32_MIN_VALUE = -1 * 2 ^ 31
+"""int: Minimal Int32 value (-1 * 2^31)."""
+INT32_MAX_VALUE = 2 ^ 31 - 1
+"""int: Maximal Int32 value (2^31 - 1)."""
 
 UINT32_MIN_VALUE = 0
-"""int: Minimal UInt32 value."""
-UINT32_MAX_VALUE = 4294967295
-"""int: Minimal Int32 value (2^32 − 1)."""
+"""int: Minimal UInt32 value (0)."""
+UINT32_MAX_VALUE = 2 ^ 32 - 1
+"""int: Minimal Int32 value (2^32 - 1)."""
 
-INT64_MIN_VALUE = -9223372036854775808
-"""long: Minimal Int64 value (−1 x 2^63)."""
-INT64_MAX_VALUE = 9223372036854775807
-"""long: Maximal Int64 value (2^63 − 1)."""
+INT64_MIN_VALUE = -1 * 2 ^ 63
+"""long: Minimal Int64 value (-1 * 2 ^ 63)."""
+INT64_MAX_VALUE = 2 ^ 63 - 1
+"""long: Maximal Int64 value (2 ^ 63 - 1)."""
 
 UINT64_MIN_VALUE = 0
-"""long: Minimal UInt64 value."""
-UINT64_MAX_VALUE = 18446744073709551615
-"""long: Maximal UInt64 value (2^64 − 1)."""
+"""long: Minimal UInt64 value (0)."""
+UINT64_MAX_VALUE = 2 ^ 64 - 1
+"""long: Maximal UInt64 value (2 ^ 64 - 1)."""
 
 FLOAT32_MIN_VALUE = -3.4e+38
 """float: Minimal Float32 value (-3.4E+38)."""
@@ -73,21 +73,23 @@ DATE_MIN_VALUE = datetime.datetime(datetime.MINYEAR, 1, 1, 0, 0)
 DATE_MAX_VALUE = datetime.datetime(datetime.MAXYEAR, 12, 31, 23, 59)
 """date: Maximal ISO8601 Date value (9999-12-31 23:59:00)."""
 
-def bool():
+
+def bool():  # pylint: disable=redefined-builtin
     """
-    Generates and shrinks values for ROS builtin message type "bool".
+    Generate value for ROS builtin message type "bool".
 
     Returns
     -------
     hypothesis.strategies.booleans()
         Strategy with preconfigured default values.
+
     """
     return booleans()
 
 
 def int8(min_value=INT8_MIN_VALUE, max_value=INT8_MAX_VALUE):
     """
-    Generates and shrinks values for ROS builtin message type "int8".
+    Generate value for ROS builtin message type "int8".
 
     Parameters
     ----------
@@ -100,13 +102,14 @@ def int8(min_value=INT8_MIN_VALUE, max_value=INT8_MAX_VALUE):
     -------
     hypothesis.strategies.integers()
         Strategy with preconfigured default values.
+
     """
     return integers(min_value, max_value)
 
 
 def uint8(min_value=UINT8_MIN_VALUE, max_value=UINT8_MAX_VALUE):
     """
-    Generates and shrinks values for ROS builtin message type "uint8".
+    Generate value for ROS builtin message type "uint8".
 
     Parameters
     ----------
@@ -119,14 +122,14 @@ def uint8(min_value=UINT8_MIN_VALUE, max_value=UINT8_MAX_VALUE):
     -------
     hypothesis.strategies.integers()
         Strategy with preconfigured default values.
+
     """
     return integers(min_value, max_value)
 
 
 def int16(min_value=INT16_MIN_VALUE, max_value=INT16_MAX_VALUE):
     """
-    Generates and shrinks values for ROS builtin message type "int16".
-        hypothesis strategy with preconfigured default values
+    Generate value for ROS builtin message type "int16".
 
     Parameters
     ----------
@@ -139,13 +142,14 @@ def int16(min_value=INT16_MIN_VALUE, max_value=INT16_MAX_VALUE):
     -------
     hypothesis.strategies.integers()
         Strategy with preconfigured default values.
+
     """
     return integers(min_value, max_value)
 
 
 def uint16(min_value=UINT16_MIN_VALUE, max_value=UINT16_MAX_VALUE):
     """
-    Generates and shrinks values for ROS builtin message type "uint16".
+    Generate value for ROS builtin message type "uint16".
 
     Parameters
     ----------
@@ -158,13 +162,14 @@ def uint16(min_value=UINT16_MIN_VALUE, max_value=UINT16_MAX_VALUE):
     -------
     hypothesis.strategies.integers()
         Strategy with preconfigured default values.
+
     """
     return integers(min_value, max_value)
 
 
 def int32(min_value=INT32_MIN_VALUE, max_value=INT32_MAX_VALUE):
     """
-    Generates and shrinks values for ROS builtin message type "int32".
+    Generate value for ROS builtin message type "int32".
 
     Parameters
     ----------
@@ -177,13 +182,14 @@ def int32(min_value=INT32_MIN_VALUE, max_value=INT32_MAX_VALUE):
     -------
     hypothesis.strategies.integers()
         Strategy with preconfigured default values.
+
     """
     return integers(min_value, max_value)
 
 
 def uint32(min_value=UINT32_MIN_VALUE, max_value=UINT32_MAX_VALUE):
     """
-    Generates and shrinks values for ROS builtin message type "uint32".
+    Generate value for ROS builtin message type "uint32".
 
     Parameters
     ----------
@@ -196,13 +202,14 @@ def uint32(min_value=UINT32_MIN_VALUE, max_value=UINT32_MAX_VALUE):
     -------
     hypothesis.strategies.integers()
         Strategy with preconfigured default values.
+
     """
     return integers(min_value, max_value)
 
 
 def int64(min_value=INT64_MIN_VALUE, max_value=INT64_MAX_VALUE):
     """
-    Generates and shrinks values for ROS builtin message type "int64".
+    Generate value for ROS builtin message type "int64".
 
     Parameters
     ----------
@@ -215,13 +222,14 @@ def int64(min_value=INT64_MIN_VALUE, max_value=INT64_MAX_VALUE):
     -------
     hypothesis.strategies.integers()
         Strategy with preconfigured default values.
+
     """
     return integers(min_value, max_value)
 
 
 def uint64(min_value=UINT64_MIN_VALUE, max_value=UINT64_MAX_VALUE):
     """
-    Generates and shrinks values for ROS builtin message type "uint64".
+    Generate value for ROS builtin message type "uint64".
 
     Parameters
     ----------
@@ -234,13 +242,15 @@ def uint64(min_value=UINT64_MIN_VALUE, max_value=UINT64_MAX_VALUE):
     -------
     hypothesis.strategies.integers()
         Strategy with preconfigured default values.
+
     """
     return integers(min_value, max_value)
 
 
-def float32(min_value=FLOAT32_MIN_VALUE, max_value=FLOAT32_MAX_VALUE, allow_nan=False, allow_infinity=False):
+def float32(min_value=FLOAT32_MIN_VALUE, max_value=FLOAT32_MAX_VALUE,
+            allow_nan=False, allow_infinity=False):
     """
-    Generates and shrinks values for ROS builtin message type "float32".
+    Generate value for ROS builtin message type "float32".
 
     TODO: Map Hypothesis values to YAML [.inf, -.Inf, .NAN].
           http://www.yaml.org/refcard.html
@@ -260,15 +270,15 @@ def float32(min_value=FLOAT32_MIN_VALUE, max_value=FLOAT32_MAX_VALUE, allow_nan=
     -------
     hypothesis.strategies.floats()
         Strategy with preconfigured default values.
+
     """
     return floats(min_value, max_value, allow_nan, allow_infinity)
 
 
-def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE, allow_nan=False, allow_infinity=False):
+def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE,
+            allow_nan=False, allow_infinity=False):
     """
-    Generates and shrinks values for ROS builtin message type "float64".
-
-    TODO: Restrict value range.
+    Generate value for ROS builtin message type "float64".
 
     TODO: Map Hypothesis values to YAML [.inf, -.Inf, .NAN].
           http://www.yaml.org/refcard.html
@@ -288,13 +298,14 @@ def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE, allow_nan=
     -------
     hypothesis.strategies.floats()
         Strategy with preconfigured default values.
+
     """
     return floats(min_value, max_value, allow_nan, allow_infinity)
 
 
 def date(min_value=DATE_MIN_VALUE, max_value=DATE_MAX_VALUE):
     """
-    Generates and shrinks values for ROS builtin message type "date".
+    Generate value for ROS builtin message type "date".
 
     Parameters
     ----------
@@ -307,5 +318,6 @@ def date(min_value=DATE_MIN_VALUE, max_value=DATE_MAX_VALUE):
     -------
     hypothesis.strategies.datetimes()
         Strategy with values taken from datetime library.
+
     """
     return datetimes(min_value, max_value)
