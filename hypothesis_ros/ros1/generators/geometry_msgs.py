@@ -15,7 +15,7 @@ which are usable in both, ROS1 and ROS2 (`ROS1 std_msgs/geometry_msgs`_, `ROS2 s
 from collections import namedtuple
 from hypothesis.strategies import composite
 
-from rospbt.ros1.generators.builtin_msg_field_types import float64
+from hypothesis_ros.ros1.generators.builtin_msg_field_types import float64
 
 _Point = namedtuple('Point', 'x y z')
 _Quaternion = namedtuple('Quaternion', 'x y z w')
@@ -77,10 +77,10 @@ def pose(draw, position=point(), orientation=quaternion()):
 
     Parameters
     ----------
-    position : rospbt.ros1.generators.point()
-        Strategy to generate position value. (Default: Default rospbt strategy.)
-    orientation : rospbt.ros1.generators.quaternion()
-        Strategy to generate orientation value. (Default: Default rospbt strategy.)
+    position : hypothesis_ros.ros1.generators.point()
+        Strategy to generate position value. (Default: Default hypothesis_ros strategy.)
+    orientation : hypothesis_ros.ros1.generators.quaternion()
+        Strategy to generate orientation value. (Default: Default hypothesis-ros strategy.)
 
     """
     position_value, orientation_value = draw(position), draw(orientation)
@@ -118,10 +118,10 @@ def transform(draw, translation=vector3(), rotation=quaternion()):
 
     Parameters
     ----------
-    position : rospbt.ros1.generators.vector3()
-        Strategy to generate translation value. (Default: Default rospbt strategy.)
-    orientation : rospbt.ros1.generators.quaternion()
-        Strategy to generate rotation value. (Default: Default rospbt strategy.)
+    position : hypothesis_ros.ros1.generators.vector3()
+        Strategy to generate translation value. (Default: Default hypothesis_ros strategy.)
+    orientation : hypothesis_ros.ros1.generators.quaternion()
+        Strategy to generate rotation value. (Default: Default hypothesis-ros strategy.)
 
     """
     translation_value, rotation_value = draw(translation), draw(rotation)

@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'rospbt'
+project = u'hypothesis-ros'
 copyright = u'2018, Florian Kromer'
 author = u'Florian Kromer'
 
@@ -103,7 +103,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'rospbtdoc'
+htmlhelp_basename = 'hypothesis-rosdoc'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -130,7 +130,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'rospbt.tex', u'rospbt Documentation',
+    (master_doc, 'hypothesis-ros.tex', u'hypothesis-ros Documentation',
      u'Florian Kromer', 'manual'),
 ]
 
@@ -140,7 +140,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'rospbt', u'rospbt Documentation',
+    (master_doc, 'hypothesis-ros', u'hypothesis-ros Documentation',
      [author], 1)
 ]
 
@@ -151,8 +151,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'rospbt', u'rospbt Documentation',
-     author, 'rospbt', 'One line description of project.',
+    (master_doc, 'hypothesis-ros', u'hypothesis-ros Documentation',
+     author, 'hypothesis-ros', 'One line description of project.',
      'Miscellaneous'),
 ]
 

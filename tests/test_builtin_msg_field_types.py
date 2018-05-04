@@ -5,7 +5,7 @@ Unit tests for the generators of the built-in message field datatypes.
 
 import datetime
 from hypothesis import given
-from rospbt.ros1.generators import builtin_msg_field_types
+from hypothesis_ros.ros1.generators import builtin_msg_field_types
 
 
 @given(builtin_msg_field_types.int8())

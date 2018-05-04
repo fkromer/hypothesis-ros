@@ -10,9 +10,9 @@ with open('test-requirements.txt') as f:
     test_requires = [line.strip() for line in f.readlines()]
 
 setup(
-    name="rospbt",
+    name="hypothesis-ros",
     version="0.1.0",
-    url="https://github.com/fkromer/rospbt",
+    url="https://github.com/fkromer/hypothesis-ros",
     license='GPLv3',
     author="Florian Kromer",
     author_email="florian.kromer@mailbox.org",

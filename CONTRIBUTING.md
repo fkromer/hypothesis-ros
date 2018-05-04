@@ -4,7 +4,7 @@
 
 ### Contributing code
 
-If you have improvements to `rospbt`, send your pull requests! For those
+If you have improvements to `hypothesis-ros`, send your pull requests! For those
 just getting started, Github has a
 [howto "using pull requests"](https://help.github.com/articles/using-pull-requests/).
 
@@ -19,7 +19,7 @@ single commit. For those just getting started, there is a
 [section "Git tools - Rewiting history" in the git docs](https://git-scm.com/book/en/v2/Git-Tools-Rewriting-History).
 
 If you want to contribute but you're not sure where to start, take a look at the
-[issues with the "contributions welcome" label](https://github.com/fkromer/rospbt/labels/stat%3Acontributions%20welcome). These are issues that are particularly well suited for outside contributions,
+[issues with the "contributions welcome" label](https://github.com/fkromer/hypothesis-ros/labels/stat%3Acontributions%20welcome). These are issues that are particularly well suited for outside contributions,
 often because already existing code inspires how to implement the issue. If you
 decide to start on an issue, leave a comment so that other people know that
 you're working on it. If you want to help out, but not alone, use the issue
@@ -27,9 +27,9 @@ comment thread to coordinate.
 
 ### Contribution guidelines and standards
 
-Before sending your pull request for [review](https://github.com/fkromer/rospbt/pulls),
+Before sending your pull request for [review](https://github.com/fkromer/hypothesis-ros/pulls),
 make sure your changes are consistent with the guidelines and follow the
-`rospbt` coding style.
+`hypothesis-ros` coding style.
 
 #### General guidelines and philosophy for contribution
 
@@ -50,7 +50,7 @@ In case you want pull request "property based tests" please use `Hypothesis`.
 
 #### Versioning
 
-`rospbt` uses [Semantic Versioning 2.0.0](https://semver.org/) for releases.
+`hypothesis-ros` uses [Semantic Versioning 2.0.0](https://semver.org/) for releases.
 Keep API compatibility in mind when you add, change or remove features. If you
 create pull requests please provide a note how it impacts versioning after merge.
 
@@ -76,7 +76,7 @@ required anyway (because already existing).
 
 #### Python coding style
 
-Changes to `rospbt` code should conform to
+Changes to `hypothesis-ros` code should conform to
 [Google Python Style Guide](https://google.github.io/styleguide/pyguide.html).
 BUT: For the docstring style guide refer to the section below.
 
