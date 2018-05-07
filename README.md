@@ -12,7 +12,7 @@ Hypothesis strategies for ROS node level property based testing.
 
     ❯ pip install ipython
     ❯ ipython
-    In [1]: from hypothesis_ros.ros1.generators import builtin_msg_field_types
+    In [1]: from hypothesis_ros.ros1 import builtin_msg_field_types
     In [2]: builtin_msg_field_types.int16().example()
     Out[2]:-32183
     In [3]: builtin_msg_field_types.int16(min_value=5, max_value=5).example()
@@ -28,7 +28,7 @@ Hypothesis strategies for ROS node level property based testing.
 ## Documentation
 
     ❯ ipython
-    In [1]: from hypothesis_ros.ros1.generators import builtin_msg_field_types
+    In [1]: from hypothesis_ros.ros1 import builtin_msg_field_types
     In [2]: builtin_msg_field_types?
     (module documentation)
     In [3]: builtin_msg_field_types.<TAB-replacement>?

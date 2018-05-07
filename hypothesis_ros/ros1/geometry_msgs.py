@@ -15,7 +15,7 @@ which are usable in both, ROS1 and ROS2 (`ROS1 std_msgs/geometry_msgs`_, `ROS2 s
 from collections import namedtuple
 from hypothesis.strategies import composite
 
-from hypothesis_ros.ros1.generators.builtin_msg_field_types import float64
+from hypothesis_ros.ros1.builtin_msg_field_types import float64
 
 _Point = namedtuple('Point', 'x y z')
 _Quaternion = namedtuple('Quaternion', 'x y z w')
@@ -77,9 +77,9 @@ def pose(draw, position=point(), orientation=quaternion()):
 
     Parameters
     ----------
-    position : hypothesis_ros.ros1.generators.point()
+    position : hypothesis_ros.ros1.point()
         Strategy to generate position value. (Default: Default hypothesis_ros strategy.)
-    orientation : hypothesis_ros.ros1.generators.quaternion()
+    orientation : hypothesis_ros.ros1.quaternion()
         Strategy to generate orientation value. (Default: Default hypothesis-ros strategy.)
 
     """
@@ -118,9 +118,9 @@ def transform(draw, translation=vector3(), rotation=quaternion()):
 
     Parameters
     ----------
-    position : hypothesis_ros.ros1.generators.vector3()
+    position : hypothesis_ros.ros1.vector3()
         Strategy to generate translation value. (Default: Default hypothesis_ros strategy.)
-    orientation : hypothesis_ros.ros1.generators.quaternion()
+    orientation : hypothesis_ros.ros1.quaternion()
         Strategy to generate rotation value. (Default: Default hypothesis-ros strategy.)
 
     """

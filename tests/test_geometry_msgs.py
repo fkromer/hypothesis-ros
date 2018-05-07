@@ -5,14 +5,14 @@ Unit tests for the generators of geometry_msgs.
 
 from hypothesis import given
 from hypothesis.strategies import just
-from hypothesis_ros.ros1.generators.geometry_msgs import (
+from hypothesis_ros.ros1.geometry_msgs import (
     point,
     pose,
     vector3,
     quaternion,
     transform
 )
-from hypothesis_ros.ros1.generators.builtin_msg_field_types import (
+from hypothesis_ros.ros1.builtin_msg_field_types import (
     float64
 )
 
