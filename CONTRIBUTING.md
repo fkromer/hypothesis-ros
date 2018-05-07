@@ -94,12 +94,14 @@ creating a pull request:
 
 - `tests`: Tests run with `pytest` test runner.
 - `lint`: Static analysis with `pylint`.
+- `radon`: Maintainability analysis with `radon`.
 - `code_style`: Code style checks.
 - `docs_style`: Docstring style checks.
 - `docs`: Sphinx documentation integrity checks. (The cocumentation resides in `/.tox/docs/tmp/html`.)
 
     tox -e tests
     tox -e lint
+    tox -e radon
     tox -e code_style
     tox -e docs_style
     tox -e docs
