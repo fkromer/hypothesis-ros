@@ -18,55 +18,55 @@ message field types which are usable in both, ROS1 and ROS2
 import datetime
 from hypothesis.strategies import booleans, datetimes, floats, integers
 
-INT8_MIN_VALUE = -1 * 2 ^ 7
-"""int: Minimal Int8 value (-1 * 2^7)."""
-INT8_MAX_VALUE = 2 ^ 7 - 1
-"""int: Maximal Int8 value (2^7 - 1)."""
+INT8_MIN_VALUE = -1 * (2 ** 7)
+"""int: Minimal Int8 value."""
+INT8_MAX_VALUE = (2 ** 7) - 1
+"""int: Maximal Int8 value."""
 
 UINT8_MIN_VALUE = 0
-"""int: Maximal UInt8 value (0)."""
-UINT8_MAX_VALUE = 2 ^ 8 - 1
-"""int: Maximal UInt8 value (2^8 - 1)."""
+"""int: Minimal UInt8 value."""
+UINT8_MAX_VALUE = (2 ** 8) - 1
+"""int: Maximal UInt8 value."""
 
-INT16_MIN_VALUE = -1 * 2 ^ 15
-"""int: Minimal Int16 value (-1 * 2^15)."""
-INT16_MAX_VALUE = 2 ^ 15 - 1
-"""int: Maximal Int16 value (2^15 - 1)."""
+INT16_MIN_VALUE = -1 * (2 ** 15)
+"""int: Minimal Int16 value."""
+INT16_MAX_VALUE = (2 ** 15) - 1
+"""int: Maximal Int16 value."""
 
 UINT16_MIN_VALUE = 0
-"""int: Minimal UInt16 value (0)."""
-UINT16_MAX_VALUE = 2 ^ 16 - 1
-"""int: Maximal UInt16 value (2^16 - 1)."""
+"""int: Minimal UInt16 value."""
+UINT16_MAX_VALUE = (2 ** 16) - 1
+"""int: Maximal UInt16 value."""
 
-INT32_MIN_VALUE = -1 * 2 ^ 31
-"""int: Minimal Int32 value (-1 * 2^31)."""
-INT32_MAX_VALUE = 2 ^ 31 - 1
-"""int: Maximal Int32 value (2^31 - 1)."""
+INT32_MIN_VALUE = -1 * (2 ** 31)
+"""int: Minimal Int32 value."""
+INT32_MAX_VALUE = (2 ** 31) - 1
+"""int: Maximal Int32 value."""
 
 UINT32_MIN_VALUE = 0
-"""int: Minimal UInt32 value (0)."""
-UINT32_MAX_VALUE = 2 ^ 32 - 1
-"""int: Minimal Int32 value (2^32 - 1)."""
+"""int: Minimal UInt32 value."""
+UINT32_MAX_VALUE = (2 ** 32) - 1
+"""int: Maximal UInt32 value."""
 
-INT64_MIN_VALUE = -1 * 2 ^ 63
-"""long: Minimal Int64 value (-1 * 2 ^ 63)."""
-INT64_MAX_VALUE = 2 ^ 63 - 1
-"""long: Maximal Int64 value (2 ^ 63 - 1)."""
+INT64_MIN_VALUE = -1 * (2 ** 63)
+"""long: Minimal Int64 value."""
+INT64_MAX_VALUE = (2 ** 63) - 1
+"""long: Maximal Int64 value."""
 
 UINT64_MIN_VALUE = 0
-"""long: Minimal UInt64 value (0)."""
-UINT64_MAX_VALUE = 2 ^ 64 - 1
-"""long: Maximal UInt64 value (2 ^ 64 - 1)."""
+"""long: Minimal UInt64 value."""
+UINT64_MAX_VALUE = (2 ** 64) - 1
+"""long: Maximal UInt64 value."""
 
 FLOAT32_MIN_VALUE = -3.4e+38
-"""float: Minimal Float32 value (-3.4E+38)."""
+"""float: Minimal Float32 value."""
 FLOAT32_MAX_VALUE = +3.4e+38
-"""float: Maximal Float32 value (+3.4E+38)."""
+"""float: Maximal Float32 value."""
 
 FLOAT64_MIN_VALUE = -1.7E+308
-"""float: Minimal Float32 value (-1.7E+308)."""
+"""float: Minimal Float32 value."""
 FLOAT64_MAX_VALUE = +1.7E+308
-"""float: Maximal Float32 value (+1.7E+308)."""
+"""float: Maximal Float32 value."""
 
 DATE_MIN_VALUE = datetime.datetime(datetime.MINYEAR, 1, 1, 0, 0)
 """date: Minimal ISO8601 Date value (0001-01-01 00:00:00)."""
