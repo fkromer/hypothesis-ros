@@ -16,7 +16,13 @@ message field types which are usable in both, ROS1 and ROS2
 """
 
 import datetime
-from hypothesis.strategies import booleans, datetimes, floats, integers
+from hypothesis.strategies import (
+    booleans,
+    datetimes,
+    defines_strategy,
+    floats,
+    integers
+)
 
 INT8_MIN_VALUE = -1 * (2 ** 7)
 """int: Minimal Int8 value."""
@@ -74,6 +80,7 @@ DATE_MAX_VALUE = datetime.datetime(datetime.MAXYEAR, 12, 31, 23, 59)
 """date: Maximal ISO8601 Date value (9999-12-31 23:59:00)."""
 
 
+@defines_strategy
 def bool():  # pylint: disable=redefined-builtin
     """
     Generate value for ROS builtin message type "bool".
@@ -87,6 +94,7 @@ def bool():  # pylint: disable=redefined-builtin
     return booleans()
 
 
+@defines_strategy
 def int8(min_value=INT8_MIN_VALUE, max_value=INT8_MAX_VALUE):
     """
     Generate value for ROS builtin message type "int8".
@@ -107,6 +115,7 @@ def int8(min_value=INT8_MIN_VALUE, max_value=INT8_MAX_VALUE):
     return integers(min_value, max_value)
 
 
+@defines_strategy
 def uint8(min_value=UINT8_MIN_VALUE, max_value=UINT8_MAX_VALUE):
     """
     Generate value for ROS builtin message type "uint8".
@@ -127,6 +136,7 @@ def uint8(min_value=UINT8_MIN_VALUE, max_value=UINT8_MAX_VALUE):
     return integers(min_value, max_value)
 
 
+@defines_strategy
 def int16(min_value=INT16_MIN_VALUE, max_value=INT16_MAX_VALUE):
     """
     Generate value for ROS builtin message type "int16".
@@ -147,6 +157,7 @@ def int16(min_value=INT16_MIN_VALUE, max_value=INT16_MAX_VALUE):
     return integers(min_value, max_value)
 
 
+@defines_strategy
 def uint16(min_value=UINT16_MIN_VALUE, max_value=UINT16_MAX_VALUE):
     """
     Generate value for ROS builtin message type "uint16".
@@ -167,6 +178,7 @@ def uint16(min_value=UINT16_MIN_VALUE, max_value=UINT16_MAX_VALUE):
     return integers(min_value, max_value)
 
 
+@defines_strategy
 def int32(min_value=INT32_MIN_VALUE, max_value=INT32_MAX_VALUE):
     """
     Generate value for ROS builtin message type "int32".
@@ -187,6 +199,7 @@ def int32(min_value=INT32_MIN_VALUE, max_value=INT32_MAX_VALUE):
     return integers(min_value, max_value)
 
 
+@defines_strategy
 def uint32(min_value=UINT32_MIN_VALUE, max_value=UINT32_MAX_VALUE):
     """
     Generate value for ROS builtin message type "uint32".
@@ -207,6 +220,7 @@ def uint32(min_value=UINT32_MIN_VALUE, max_value=UINT32_MAX_VALUE):
     return integers(min_value, max_value)
 
 
+@defines_strategy
 def int64(min_value=INT64_MIN_VALUE, max_value=INT64_MAX_VALUE):
     """
     Generate value for ROS builtin message type "int64".
@@ -227,6 +241,7 @@ def int64(min_value=INT64_MIN_VALUE, max_value=INT64_MAX_VALUE):
     return integers(min_value, max_value)
 
 
+@defines_strategy
 def uint64(min_value=UINT64_MIN_VALUE, max_value=UINT64_MAX_VALUE):
     """
     Generate value for ROS builtin message type "uint64".
@@ -247,6 +262,7 @@ def uint64(min_value=UINT64_MIN_VALUE, max_value=UINT64_MAX_VALUE):
     return integers(min_value, max_value)
 
 
+@defines_strategy
 def float32(min_value=FLOAT32_MIN_VALUE, max_value=FLOAT32_MAX_VALUE,
             allow_nan=False, allow_infinity=False):
     """
@@ -275,6 +291,7 @@ def float32(min_value=FLOAT32_MIN_VALUE, max_value=FLOAT32_MAX_VALUE,
     return floats(min_value, max_value, allow_nan, allow_infinity)
 
 
+@defines_strategy
 def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE,
             allow_nan=False, allow_infinity=False):
     """
@@ -303,6 +320,7 @@ def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE,
     return floats(min_value, max_value, allow_nan, allow_infinity)
 
 
+@defines_strategy
 def date(min_value=DATE_MIN_VALUE, max_value=DATE_MAX_VALUE):
     """
     Generate value for ROS builtin message type "date".
