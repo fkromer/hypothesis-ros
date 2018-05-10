@@ -17,6 +17,7 @@ message field types which are usable in both, ROS1 and ROS2
 
 import datetime
 from hypothesis.strategies import (
+    binary,
     booleans,
     datetimes,
     defines_strategy,
@@ -78,6 +79,11 @@ DATE_MIN_VALUE = datetime.datetime(datetime.MINYEAR, 1, 1, 0, 0)
 """date: Minimal ISO8601 Date value (0001-01-01 00:00:00)."""
 DATE_MAX_VALUE = datetime.datetime(datetime.MAXYEAR, 12, 31, 23, 59)
 """date: Maximal ISO8601 Date value (9999-12-31 23:59:00)."""
+
+STRING_MIN_SIZE = 0
+"""int: Minimal string size."""
+STRING_MAX_SIZE = 1000
+"""int: Maximal string size."""
 
 
 @defines_strategy
@@ -339,3 +345,24 @@ def date(min_value=DATE_MIN_VALUE, max_value=DATE_MAX_VALUE):
 
     """
     return datetimes(min_value, max_value)
+
+@defines_strategy
+def string(min_size=STRING_MIN_SIZE, max_size=STRING_MAX_SIZE):
+    """
+    Generate value for ROS builtin message type "string".
+
+    Parameters
+    ----------
+    min_size : int
+        Minimal size to generate.
+    max_size : int
+        Maximal size to generate.
+
+    Returns
+    -------
+    hypothesis.strategies.binary()
+        Strategy with preconfigured default values.
+
+    """
+    # average_size parameter is deprecated
+    return binary(min_size=min_size, max_size=max_size)

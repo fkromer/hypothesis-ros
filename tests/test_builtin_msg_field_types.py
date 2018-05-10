@@ -82,3 +82,9 @@ def test_date_generates_in_range_value_per_default(generated_value):
     """Verify default min. generated value for Date."""
     assert generated_value >= builtin_msg_field_types.DATE_MIN_VALUE
     assert generated_value <= builtin_msg_field_types.DATE_MAX_VALUE
+
+@given(builtin_msg_field_types.string())
+def test_string_generates_in_range_size_per_default(generated_value):
+    """Verify default generated string size."""
+    assert len(generated_value) >= builtin_msg_field_types.STRING_MIN_SIZE
+    assert len(generated_value) <= builtin_msg_field_types.STRING_MAX_SIZE
