@@ -1,21 +1,17 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
-Provides hypothesis strategies for ROS std_msgs/geometry_msgs
-which are usable in both, ROS1 and ROS2 (`ROS1 std_msgs/geometry_msgs`_, `ROS2 std_msgs/geometry_msgs`_).
+Provides hypothesis strategies for `ROS geometry_msgs`_.
 
-.. _ROS1 std_msgs/geometry_msgs:
-   URL
+.. _ROS geometry_msgs:
+   http://wiki.ros.org/geometry_msgs
 
-.. _ROS2 std_msgs/geometry_msgs:
-   URL
 """
 
 from collections import namedtuple
 from hypothesis.strategies import composite
 
-from hypothesis_ros.ros1.builtin_msg_field_types import float64
+from hypothesis_ros.message_fields import float64
 
 _Point = namedtuple('Point', 'x y z')
 _Quaternion = namedtuple('Quaternion', 'x y z w')

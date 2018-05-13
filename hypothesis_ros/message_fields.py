@@ -1,17 +1,10 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
 """
-Provides hypothesis strategies for ROS builtin message field types. The
-strategies generate and shrink failed examples. They implement the generic
-message field types which are usable in both, ROS1 and ROS2
-(`ROS1 message field types`_, `ROS2 message field types`_).
+Provides hypothesis strategies for `ROS message fields`_.
 
-.. _ROS1 message field types:
+.. _ROS message fields:
    http://wiki.ros.org/msg#Fields
-
-.. _ROS2 message field types:
-   https://github.com/ros2/ros2/wiki/About-ROS-Interfaces#211-field-types
 
 """
 
@@ -19,7 +12,6 @@ import datetime
 from hypothesis.strategies import (
     binary,
     booleans,
-    datetimes,
     defines_strategy,
     floats,
     integers
@@ -74,11 +66,6 @@ FLOAT64_MIN_VALUE = -1.7E+308
 """float: Minimal Float32 value."""
 FLOAT64_MAX_VALUE = +1.7E+308
 """float: Maximal Float32 value."""
-
-DATE_MIN_VALUE = datetime.datetime(datetime.MINYEAR, 1, 1, 0, 0)
-"""date: Minimal ISO8601 Date value (0001-01-01 00:00:00)."""
-DATE_MAX_VALUE = datetime.datetime(datetime.MAXYEAR, 12, 31, 23, 59)
-"""date: Maximal ISO8601 Date value (9999-12-31 23:59:00)."""
 
 STRING_MIN_SIZE = 0
 """int: Minimal string size."""
@@ -325,26 +312,6 @@ def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE,
     """
     return floats(min_value, max_value, allow_nan, allow_infinity)
 
-
-@defines_strategy
-def date(min_value=DATE_MIN_VALUE, max_value=DATE_MAX_VALUE):
-    """
-    Generate value for ROS builtin message type "date".
-
-    Parameters
-    ----------
-    min_value : datetime.datetime
-        Minimal value to generate.
-    max_value : datetime.datetime
-        Maximal value to generate.
-
-    Returns
-    -------
-    hypothesis.strategies.datetimes()
-        Strategy with values taken from datetime library.
-
-    """
-    return datetimes(min_value, max_value)
 
 @defines_strategy
 def string(min_size=STRING_MIN_SIZE, max_size=STRING_MAX_SIZE):
