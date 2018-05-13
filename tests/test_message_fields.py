@@ -5,6 +5,7 @@ Unit tests for the message field strategies.
 
 from hypothesis import given
 from hypothesis_ros.message_fields import (
+    bool,
     int8, INT8_MIN_VALUE, INT8_MAX_VALUE,
     uint8, UINT8_MIN_VALUE, UINT8_MAX_VALUE,
     int16, INT16_MIN_VALUE, INT16_MAX_VALUE,
@@ -17,6 +18,12 @@ from hypothesis_ros.message_fields import (
     float64, FLOAT64_MIN_VALUE, FLOAT64_MAX_VALUE,
     string, STRING_MIN_SIZE, STRING_MAX_SIZE
 )
+
+
+@given(bool())
+def test_bool_in_range_value_per_default(generated_value):
+    """Verify default value range for bool."""
+    assert generated_value in [False, True]
 
 
 @given(int8())
