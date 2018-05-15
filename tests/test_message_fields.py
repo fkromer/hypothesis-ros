@@ -16,7 +16,9 @@ from hypothesis_ros.message_fields import (
     uint64, UINT64_MIN_VALUE, UINT64_MAX_VALUE,
     float32, FLOAT32_MIN_VALUE, FLOAT32_MAX_VALUE,
     float64, FLOAT64_MIN_VALUE, FLOAT64_MAX_VALUE,
-    string, STRING_MIN_SIZE, STRING_MAX_SIZE
+    string, STRING_MIN_SIZE, STRING_MAX_SIZE,
+    time,
+    duration,
 )
 
 
@@ -101,3 +103,23 @@ def test_string_generates_in_range_size_per_default(generated_value):
     """Verify default generated string size."""
     assert len(generated_value) >= STRING_MIN_SIZE
     assert len(generated_value) <= STRING_MAX_SIZE
+
+@given(time())
+def test_time_generates_in_range_values_per_default(generated_value):
+    """Verfiy default generated value range."""
+    secs = generated_value.secs
+    nsecs = generated_value.nsecs
+    assert secs >= UINT32_MIN_VALUE
+    assert secs <= UINT32_MAX_VALUE
+    assert nsecs >= UINT32_MIN_VALUE
+    assert nsecs <= UINT32_MAX_VALUE
+
+@given(duration())
+def test_duration_generates_in_range_values_per_default(generated_value):
+    """Verfiy default generated value range."""
+    secs = generated_value.secs
+    nsecs = generated_value.nsecs
+    assert secs >= INT32_MIN_VALUE
+    assert secs <= INT32_MAX_VALUE
+    assert nsecs >= INT32_MIN_VALUE
+    assert nsecs <= INT32_MAX_VALUE

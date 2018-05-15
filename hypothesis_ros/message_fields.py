@@ -8,10 +8,12 @@ Provides hypothesis strategies for `ROS message fields`_.
 
 """
 
+from collections import namedtuple
 import datetime
 from hypothesis.strategies import (
     binary,
     booleans,
+    composite,
     defines_strategy,
     floats,
     integers
@@ -71,6 +73,9 @@ STRING_MIN_SIZE = 0
 """int: Minimal string size."""
 STRING_MAX_SIZE = 1000
 """int: Maximal string size."""
+
+_Time = namedtuple('Time', 'secs nsecs')
+_Duration = namedtuple('Duration', 'secs nsecs')
 
 
 @defines_strategy
@@ -333,3 +338,51 @@ def string(min_size=STRING_MIN_SIZE, max_size=STRING_MAX_SIZE):
     """
     # average_size parameter is deprecated
     return binary(min_size=min_size, max_size=max_size)
+
+
+@composite
+def time(draw, secs=uint32(), nsecs=uint32()):
+    """
+    Generate value for ROS builtin message type "time".
+
+    Parameters
+    ----------
+    secs: hypothesis_ros.message_fields.uint32()
+        Seconds.
+    nsecs: hypothesis_ros.message_fields.uint32()
+        Nano seconds.
+
+    Returns
+    -------
+    _Time()
+        Strategy with preconfigured default values.
+
+    """
+    secs_value, nsecs_value = draw(secs), draw(nsecs)
+    assert isinstance(secs_value, int), 'drew invalid sec={secs_value} from {secs} for integer field'.format(secs_value, secs)
+    assert isinstance(nsecs_value, int), 'drew invalid nsec={nsecs_value} from {nsecs} for integer field'.format(nsecs_value, nsecs)
+    return _Time(secs_value, nsecs_value)
+
+
+@composite
+def duration(draw, secs=int32(), nsecs=int32()):
+    """
+    Generate value for ROS builtin message type "duration".
+
+    Parameters
+    ----------
+    secs: hypothesis_ros.message_fields.int32()
+        Seconds.
+    nsecs: hypothesis_ros.message_fields.int32()
+        Nano seconds.
+
+    Returns
+    -------
+    _Duration()
+        Namedtuple with drawn values for secs and nsecs.
+
+    """
+    secs_value, nsecs_value = draw(secs), draw(nsecs)
+    assert isinstance(secs_value, int), 'drew invalid sec={secs_value} from {secs} for integer field'.format(secs_value, secs)
+    assert isinstance(nsecs_value, int), 'drew invalid nsec={nsecs_value} from {nsecs} for integer field'.format(nsecs_value, nsecs)
+    return _Duration(secs_value, nsecs_value)
