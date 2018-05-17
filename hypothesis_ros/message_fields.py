@@ -16,7 +16,8 @@ from hypothesis.strategies import (
     composite,
     defines_strategy,
     floats,
-    integers
+    integers,
+    lists,
 )
 
 INT8_MIN_VALUE = -1 * (2 ** 7)
@@ -386,3 +387,34 @@ def duration(draw, secs=int32(), nsecs=int32()):
     assert isinstance(secs_value, int), 'drew invalid sec={secs_value} from {secs} for integer field'.format(secs_value, secs)
     assert isinstance(nsecs_value, int), 'drew invalid nsec={nsecs_value} from {nsecs} for integer field'.format(nsecs_value, nsecs)
     return _Duration(secs_value, nsecs_value)
+
+
+@defines_strategy
+def array(elements=None, min_size=None, max_size=None, unique_by=None, unique=None):
+    """
+    Generate variable length array with ROS builtin message types as elements.
+    To generate a fixed length array define `min_size == max_size`.
+
+    Parameters
+    ----------
+    elements: hypothesis_ros.message_fields
+        Strategies for pritive types from hypothesis_ros.message_fields.
+    min_size: integer
+        Minimal size of the array.
+    max_size: integer
+        Maximal size of the array.
+    unique_by: function
+        Function returning a hashable type when given a value from elements.
+        The resulting array (list) will satisfy `unique_by(result[i]) != unique_by(result[j])`.
+    unique: function
+        Function returning a hashable type. For comparison of directy object equality.
+
+    Returns
+    -------
+    list
+        A variable or fixed length array containing values drawn from elements with
+        length in the interval [min_size, max_size] (no bounds in that direction
+        if these are None).
+
+    """
+    return lists(elements=elements, min_size=min_size, max_size=max_size, unique_by=unique_by, unique=unique)

@@ -19,6 +19,7 @@ from hypothesis_ros.message_fields import (
     string, STRING_MIN_SIZE, STRING_MAX_SIZE,
     time,
     duration,
+    array,
 )
 
 
@@ -123,3 +124,35 @@ def test_duration_generates_in_range_values_per_default(generated_value):
     assert secs <= INT32_MAX_VALUE
     assert nsecs >= INT32_MIN_VALUE
     assert nsecs <= INT32_MAX_VALUE
+
+ARRAY_ELEMENT_COUNT = 5
+ARRAY_ELEMENT_MIN_VALUE = 1
+ARRAY_ELEMENT_MAX_VALUE = 3
+@given(array(elements=int8(min_value=ARRAY_ELEMENT_MIN_VALUE, max_value=ARRAY_ELEMENT_MAX_VALUE),
+             min_size=ARRAY_ELEMENT_COUNT,
+             max_size=ARRAY_ELEMENT_COUNT
+            )
+      )
+def test_fixed_length_array_element_values_customizable(generated_array):
+    """Exemplary customized fixed length array."""
+    assert len(generated_array) == ARRAY_ELEMENT_COUNT
+    for element in generated_array:
+        assert element >= ARRAY_ELEMENT_MIN_VALUE
+        assert element <= ARRAY_ELEMENT_MAX_VALUE
+
+ARRAY_MIN_LENGHT = 1
+ARRAY_MAX_LENGHT = 5
+ARRAY_ELEMENT_MIN_VALUE = 1
+ARRAY_ELEMENT_MAX_VALUE = 3
+@given(array(elements=int8(min_value=ARRAY_ELEMENT_MIN_VALUE, max_value=ARRAY_ELEMENT_MAX_VALUE),
+             min_size=ARRAY_MIN_LENGHT,
+             max_size=ARRAY_MAX_LENGHT
+            )
+      )
+def test_variable_length_array_element_values_customizable(generated_array):
+    """Exemplary customized variable length array."""
+    assert len(generated_array) >= ARRAY_MIN_LENGHT
+    assert len(generated_array) <= ARRAY_MAX_LENGHT
+    for element in generated_array:
+        assert element >= ARRAY_ELEMENT_MIN_VALUE
+        assert element <= ARRAY_ELEMENT_MAX_VALUE
