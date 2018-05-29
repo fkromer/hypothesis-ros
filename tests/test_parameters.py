@@ -8,7 +8,8 @@ from hypothesis_ros.parameters import (
     bool,
     int32,
     string,
-    date, DATE_MIN_VALUE, DATE_MAX_VALUE
+    date, DATE_MIN_VALUE, DATE_MAX_VALUE,
+    list,
 )
 
 
@@ -35,3 +36,21 @@ def test_date_generates_in_range_value_per_default(generated_value):
     """Verify default value range for Date."""
     assert generated_value >= DATE_MIN_VALUE
     assert generated_value <= DATE_MAX_VALUE
+
+
+LIST_MIN_LENGHT = 1
+LIST_MAX_LENGHT = 5
+LIST_ELEMENT_MIN_VALUE = 1
+LIST_ELEMENT_MAX_VALUE = 3
+@given(list(elements=int32(min_value=LIST_ELEMENT_MIN_VALUE, max_value=LIST_ELEMENT_MAX_VALUE),
+             min_size=LIST_MIN_LENGHT,
+             max_size=LIST_MAX_LENGHT
+            )
+      )
+def test_variable_length_list_element_values_customizable(generated_list):
+    """Exemplary customized variable length list."""
+    assert len(generated_list) >= LIST_MIN_LENGHT
+    assert len(generated_list) <= LIST_MAX_LENGHT
+    for element in generated_list:
+        assert element >= LIST_ELEMENT_MIN_VALUE
+        assert element <= LIST_ELEMENT_MAX_VALUE

@@ -11,7 +11,8 @@ Provides hypothesis strategies for `ROS parameter types`_.
 import datetime
 from hypothesis.strategies import (
     datetimes,
-    defines_strategy
+    defines_strategy,
+    lists
 )
 from hypothesis_ros.message_fields import bool as common_bool
 from hypothesis_ros.message_fields import int32 as common_int32
@@ -93,3 +94,33 @@ def date(min_value=DATE_MIN_VALUE, max_value=DATE_MAX_VALUE):
 
     """
     return datetimes(min_value, max_value)
+
+@defines_strategy
+def list(elements=None, min_size=None, max_size=None, unique_by=None, unique=None):
+    """
+    Generate variable length list with ROS parameter types as elements.
+    To generate a fixed length list define `min_size == max_size`.
+
+    Parameters
+    ----------
+    elements: hypothesis_ros.parameters
+        Strategies for types from hypothesis_ros.parameters.
+    min_size: integer
+        Minimal size of the list.
+    max_size: integer
+        Maximal size of the list.
+    unique_by: function
+        Function returning a hashable type when given a value from elements.
+        The resulting list will satisfy `unique_by(result[i]) != unique_by(result[j])`.
+    unique: function
+        Function returning a hashable type. For comparison of directy object equality.
+
+    Returns
+    -------
+    list
+        A variable or fixed length list containing values drawn from elements with
+        length in the interval [min_size, max_size] (no bounds in that direction
+        if these are None).
+
+    """
+    return lists(elements=elements, min_size=min_size, max_size=max_size, unique_by=unique_by, unique=unique)
