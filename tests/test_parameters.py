@@ -10,6 +10,7 @@ from hypothesis_ros.parameters import (
     string,
     date, DATE_MIN_VALUE, DATE_MAX_VALUE,
     list,
+    double, DOUBLE_MIN_VALUE, DOUBLE_MAX_VALUE,
 )
 
 
@@ -54,3 +55,10 @@ def test_variable_length_list_element_values_customizable(generated_list):
     for element in generated_list:
         assert element >= LIST_ELEMENT_MIN_VALUE
         assert element <= LIST_ELEMENT_MAX_VALUE
+
+
+@given(double())
+def test_double_generates_in_range_value_per_default(generated_value):
+    """Verify default value range for double."""
+    assert generated_value >= DOUBLE_MIN_VALUE
+    assert generated_value <= DOUBLE_MAX_VALUE
