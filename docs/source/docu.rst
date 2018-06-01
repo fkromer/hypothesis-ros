@@ -66,3 +66,13 @@ A typical configuration of `suppress_health_check` in `@settings` looks like fol
 
 The health checks `data_too_large`, `filter_too_much`, `return_value` and `large_base_example`
 don't need special consideration and may be used as usual.
+
+Configuration of example database
+---------------------------------
+
+If a test fails hypothesis saves the test input in a atabase.
+The next time hypothesis runs this conditions will be used first.
+The configuration of the example database may be adjusted as usual
+(`hypothesis docs example database`_).
+
+.. _hypothesis docs example database: https://hypothesis.readthedocs.io/en/latest/database.html?highlight=example%20database#the-hypothesis-example-database

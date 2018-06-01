@@ -28,6 +28,18 @@ Hypothesis strategies for ROS node level property based testing.
 
 ## Documentation
 
+### Sphinx documentation (user's guide, API reference)
+
+Build the documentation.
+
+    ❯ tox -e docs
+
+Open the documentation.
+
+    ❯ xdg-open ./docs/build/index.html
+
+### Interactive documentation (API reference)
+
     ❯ ipython
     In [1]: from hypothesis_ros import message_fields
     In [2]: message_fields?
