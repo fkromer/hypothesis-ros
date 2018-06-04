@@ -10,6 +10,7 @@ Provides hypothesis strategies for `ROS message fields`_.
 
 from collections import namedtuple
 import datetime
+from hypothesis.errors import InvalidArgument
 from hypothesis.strategies import (
     binary,
     booleans,
@@ -111,6 +112,7 @@ def int8(min_value=INT8_MIN_VALUE, max_value=INT8_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
+    if not (INT8_MIN_VALUE <= min_value <= max_value <= INT8_MAX_VALUE): raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -132,6 +134,7 @@ def uint8(min_value=UINT8_MIN_VALUE, max_value=UINT8_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
+    if not (UINT8_MIN_VALUE <= min_value <= max_value <= UINT8_MAX_VALUE): raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -153,6 +156,7 @@ def int16(min_value=INT16_MIN_VALUE, max_value=INT16_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
+    if not (INT16_MIN_VALUE <= min_value <= max_value <= INT16_MAX_VALUE): raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -174,6 +178,7 @@ def uint16(min_value=UINT16_MIN_VALUE, max_value=UINT16_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
+    if not (UINT16_MIN_VALUE <= min_value <= max_value <= UINT16_MAX_VALUE): raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -195,6 +200,7 @@ def int32(min_value=INT32_MIN_VALUE, max_value=INT32_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
+    if not (INT32_MIN_VALUE <= min_value <= max_value <= INT32_MAX_VALUE): raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -216,6 +222,7 @@ def uint32(min_value=UINT32_MIN_VALUE, max_value=UINT32_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
+    if not (UINT32_MIN_VALUE <= min_value <= max_value <= UINT32_MAX_VALUE): raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -237,6 +244,7 @@ def int64(min_value=INT64_MIN_VALUE, max_value=INT64_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
+    if not (INT64_MIN_VALUE <= min_value <= max_value <= INT64_MAX_VALUE): raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -258,6 +266,7 @@ def uint64(min_value=UINT64_MIN_VALUE, max_value=UINT64_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
+    if not (UINT64_MIN_VALUE <= min_value <= max_value <= UINT64_MAX_VALUE): raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -287,6 +296,7 @@ def float32(min_value=FLOAT32_MIN_VALUE, max_value=FLOAT32_MAX_VALUE,
         Strategy with preconfigured default values.
 
     """
+    # TODO
     return floats(min_value, max_value, allow_nan, allow_infinity)
 
 
@@ -316,6 +326,7 @@ def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE,
         Strategy with preconfigured default values.
 
     """
+    # TODO
     return floats(min_value, max_value, allow_nan, allow_infinity)
 
 
@@ -337,6 +348,7 @@ def string(min_size=STRING_MIN_SIZE, max_size=STRING_MAX_SIZE):
         Strategy with preconfigured default values.
 
     """
+    if not (STRING_MIN_SIZE <= min_size <= max_size <= STRING_MAX_SIZE): raise InvalidArgument
     # average_size parameter is deprecated
     return binary(min_size=min_size, max_size=max_size)
 
@@ -395,6 +407,8 @@ def array(elements=None, min_size=None, max_size=None, unique_by=None, unique=No
     Generate variable length array with ROS builtin message types as elements.
     To generate a fixed length array define `min_size == max_size`.
 
+    TODO: Assert that strategy for elements is from supported strategies.
+
     Parameters
     ----------
     elements: hypothesis_ros.message_fields
@@ -417,4 +431,5 @@ def array(elements=None, min_size=None, max_size=None, unique_by=None, unique=No
         if these are None).
 
     """
+    if not (min_size <= max_size): raise InvalidArgument
     return lists(elements=elements, min_size=min_size, max_size=max_size, unique_by=unique_by, unique=unique)
