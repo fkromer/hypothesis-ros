@@ -26,6 +26,20 @@ Hypothesis is compatible with
 Configuration of settings
 -------------------------
 
+`hypothesis` was initially designed for Python source code level testing.
+Therefore the configuration of `settings` needs special care.
+
+`deadline`: A deadline has either set to a very high value or should be disabled.
+
+`perform_health_checks`: In case `perform_health_checks` is enabled some health checks
+need to be selectively disabled with `suppress_health_check`.
+
+`suppress_health_check`: Refer to :ref:`Configuration of health checks`.
+
+`use_coverage`: `hypothesis` supports coverage based data generation when the tests
+are executed on the Python source code level. `hypothesis-ros` does not support
+coverage based data generation. Enabling it has no effect/could raise errors. 
+
 A typical configuration of `timeout` and `deadline` in `@settings` looks like follows:
 
 .. code-block:: python
@@ -40,12 +54,21 @@ A typical configuration of `timeout` and `deadline` in `@settings` looks like fo
     def test_node_does_not_crash(...):
         ...
 
+The settings `database_file`, `database`, `buffer_size`, `derandomize`,
+`max_examples`, `max_iterations`, `max_shrinks`, `min_satisfying_examples`,
+`phases`, `stateful_step_count`, `strict`, ``
+usually don't need special consideration and may be used as usual.
+
+.. _Configuration of health checks:
+
 Configuration of health checks
 ------------------------------
 
 `hypothesis` was initially designed for Python source code level testing.
 Therefore the configuration of `health checks` (`hypothesis docs health checks`_)
-needs special care. The health ckeck `too_slow` and `hung_test` need to be disabled usually.
+needs special care. In case health checks are performed (`perform_health_checks`)
+the health ckeck `too_slow` and `hung_test` need to be disabled via
+`suppress_healthcheck` usually.
 
 .. _hypothesis docs health checks: https://hypothesis.readthedocs.io/en/latest/healthchecks.html
 
