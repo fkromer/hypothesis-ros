@@ -22,9 +22,9 @@ Hypothesis strategies for ROS node level property based testing.
 
 ## Examples
 
-    ❯ pip install ipython
-    ❯ pip install "ipython[notebook]"
-    ❯ jupyter notebook docs/source/notebooks/core_pub_sub_hypothesis_ros.ipynb
+    ❯ pip install jupyter
+    ❯ cd docs/source/notebooks/
+    ❯ jupyter lab
 
 ## Documentation
 
