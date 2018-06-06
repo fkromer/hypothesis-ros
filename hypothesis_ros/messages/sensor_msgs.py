@@ -11,12 +11,19 @@ Provides hypothesis strategies for `ROS sensor_msgs`_.
 from collections import namedtuple
 from hypothesis.strategies import composite
 
+from hypothesis_ros.messages.geometry_msgs import vector3, quaternion
+from hypothesis_ros.messages.std_msgs import header
 from hypothesis_ros.message_fields import (  # pylint: disable=redefined-builtin
+    array,
     bool,
+    float32,
+    float64,
+    time,
     uint32,
 )
 
 _RegionOfInterest = namedtuple('RegionOfInterest', 'x_offset y_offset height width do_rectify')
+_Imu = namedtuple('Imu', 'header orientation orientation_covariance angular_velocity angular_velocity_covariance linear_acceleration linear_acceleration_covariance')
 
 
 @composite
@@ -54,3 +61,52 @@ def region_of_interest(draw,  # pylint: disable=too-many-arguments
     assert isinstance(width_value, int), 'drew invalid width={width_value} from {width} for uint32 field'.format(width_value, width)
     assert isinstance(do_rectify_value, int), 'drew invalid do_rectify={do_rectify_value} from {do_rectify} for bool field'.format(do_rectify_value, do_rectify)  # bool is subclass of int
     return _RegionOfInterest(x_offset_value, y_offset_value, height_value, width_value, do_rectify_value)
+
+
+@composite
+def imu(draw,
+        header=header(),
+        orientation=quaternion(),
+        orientation_covariance=array(elements=float64(), min_size=9, max_size=9),
+        angular_velocity=vector3(),
+        angular_velocity_covariance=array(elements=float64(), min_size=9, max_size=9),
+        linear_acceleration=vector3(),
+        linear_acceleration_covariance=array(elements=float64(), min_size=9, max_size=9)
+       ):
+    """
+    Generate values for ROS sensor_msgs/Imu.msg.
+
+    Parameters
+    ----------
+    header : hypothesis_ros.std_msgs.header()
+        Strategy to generate header value. (Default: Default hypothesis_ros strategy.)
+    orientation : hypothesis_ros.geometry_msgs.Quaternion()
+        Strategy to generate orientation value. (Default: Default hypothesis_ros strategy.)
+    orientation_covariance : hypothesis_ros.message_fields.array()
+        Strategy to generate orientation_covariance value. (Default: Customized to 9 elements of type float64().)
+    angular_velocity : hypothesis_ros.messages.geometry_msgs.vector3()
+        Strategy to generate angular_velocity value. (Default: Default hypothesis_ros strategy.)
+    angular_velocity_covariance : hypothesis_ros.message_fields.array()
+        Strategy to generate angular_velocity_covariance value. (Default: Customized to 9 elements of type float64().)
+    linear_acceleration : hypothesis_ros.messages.geometry_msgs.vector3()
+        Strategy to generate linear_acceleration value. (Default: Default hypothesis_ros strategy.)
+    linear_acceleration_covariance : hypothesis_ros.messages.message_fields.array()
+        Strategy to generate linear_acceleration_covariance value. (Default: Customized to 9 elements of type float64().)
+
+    """
+    header_value = draw(header)
+    orientation_value = draw(orientation)
+    orientation_covariance_value = draw(orientation_covariance)
+    angular_velocity_value = draw(angular_velocity)
+    angular_velocity_covariance_value = draw(angular_velocity_covariance)
+    linear_acceleration_value = draw(linear_acceleration)
+    linear_acceleration_covariance_value = draw(linear_acceleration_covariance)
+    # TODO: add validation
+    return _Imu(header_value,
+                orientation_value,
+                orientation_covariance_value,
+                angular_velocity_value,
+                angular_velocity_covariance_value,
+                linear_acceleration_value,
+                linear_acceleration_covariance_value
+               )
