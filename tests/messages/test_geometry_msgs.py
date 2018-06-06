@@ -8,11 +8,13 @@ from hypothesis.strategies import just
 from hypothesis_ros.messages.geometry_msgs import (
     point,
     pose,
+    pose_with_covariance,
     vector3,
     quaternion,
     transform
 )
 from hypothesis_ros.message_fields import (
+    array,
     float64
 )
 
@@ -52,6 +54,34 @@ def test_quaternion_accepts_customized_strategies(generated_value):
 def test_pose_accepts_customized_strategies(generated_value):
     """Exemplary customized pose."""
     assert generated_value == ((0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0))
+
+
+@given(pose_with_covariance(pose(position=point(x=float64(min_value=0.0, max_value=0.0),
+                                                y=float64(min_value=0.0, max_value=0.0),
+                                                z=float64(min_value=0.0, max_value=0.0)
+                                               ),
+                                 orientation=quaternion(x=float64(min_value=0.0, max_value=0.0),
+                                                        y=float64(min_value=0.0, max_value=0.0),
+                                                        z=float64(min_value=0.0, max_value=0.0),
+                                                        w=float64(min_value=0.0, max_value=0.0)
+                                                       )
+                                ),
+                            array(elements=float64(min_value=0.0, max_value=0.0), min_size=36, max_size=36)
+                           )
+       )
+def test_pose_with_covariance_accepts_customized_strategies(generated_value):
+    """Exemplary customized pose_with_covariance."""
+    assert generated_value == (((0.0, 0.0, 0.0),
+                                (0.0, 0.0, 0.0, 0.0)
+                               ),
+                               [0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+                               ]
+                              )
 
 
 @given(transform(translation=vector3(

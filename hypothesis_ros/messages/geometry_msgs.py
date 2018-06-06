@@ -11,11 +11,15 @@ Provides hypothesis strategies for `ROS geometry_msgs`_.
 from collections import namedtuple
 from hypothesis.strategies import composite
 
-from hypothesis_ros.message_fields import float64
+from hypothesis_ros.message_fields import (
+    array,
+    float64
+)
 
 _Point = namedtuple('Point', 'x y z')
 _Quaternion = namedtuple('Quaternion', 'x y z w')
 _Pose = namedtuple('Pose', 'position orientation')
+_PoseWithCovariance = namedtuple('PoseWithCovariance', 'pose covariance')
 _Transform = namedtuple('Transform', 'translation rotation')
 _Vector3 = namedtuple('Vector3', 'x y z')
 
@@ -83,6 +87,16 @@ def pose(draw, position=point(), orientation=quaternion()):
     assert isinstance(position_value, _Point), 'drew invalid position={position_value} from {position} for _Point field'.format(position_value, position)
     assert isinstance(orientation_value, _Quaternion), 'drew invalid orientation={orientation_value} from {orientation} for _Quaternion field'.format(orientation_value, orientation)
     return _Pose(position_value, orientation_value)
+
+
+@composite
+def pose_with_covariance(draw, pose=pose(), covariance=array(elements=float64(), min_size=36, max_size=36)):
+    """
+    Generate value for ROS geometry message type "PoseWithCovariance".
+    """
+    pose_value, covariance_value= draw(pose), draw(covariance)
+    # TODO: add validation for covariance_value
+    return _PoseWithCovariance(pose_value, covariance_value)
 
 
 @composite
