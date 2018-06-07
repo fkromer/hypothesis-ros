@@ -6,6 +6,7 @@ Unit tests for the geometry_msgs strategies.
 from hypothesis import given
 from hypothesis.strategies import just
 from hypothesis_ros.messages.sensor_msgs import (
+    compressed_image,
     imu,
     region_of_interest
 )
@@ -17,6 +18,7 @@ from hypothesis_ros.message_fields import (
     float32,
     float64,
     time,
+    uint8,
     uint32,
 )
 
@@ -66,3 +68,21 @@ def test_imu_accepts_customized_strategies(generated_values):
                                 [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
                                 (0.0, 0.0, 0.0),
                                 [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+
+
+@given(compressed_image(header(seq=uint32(min_value=0, max_value=0),
+                               stamp=time(secs=uint32(min_value=0, max_value=0),
+                                          nsecs=uint32(min_value=0, max_value=0)
+                                         ),
+                               frame_id=float64(min_value=0.0, max_value=0.0)
+                              ),
+                        just('jpg'),
+                        array(elements=uint8(min_value=0, max_value=0), min_size=4, max_size=4)
+                       )
+      )
+def test_imu_accepts_customized_strategies(generated_values):
+    """Exemplary customized compressed_image message fields."""
+    assert generated_values == ((0, (0, 0), 0.0),
+                                'jpg',
+                                [0, 0,
+                                 0, 0])

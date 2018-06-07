@@ -9,7 +9,7 @@ Provides hypothesis strategies for `ROS sensor_msgs`_.
 """
 
 from collections import namedtuple
-from hypothesis.strategies import composite
+from hypothesis.strategies import composite, sampled_from
 
 from hypothesis_ros.messages.geometry_msgs import vector3, quaternion
 from hypothesis_ros.messages.std_msgs import header
@@ -19,12 +19,13 @@ from hypothesis_ros.message_fields import (  # pylint: disable=redefined-builtin
     float32,
     float64,
     time,
+    uint8,
     uint32,
 )
 
 _RegionOfInterest = namedtuple('RegionOfInterest', 'x_offset y_offset height width do_rectify')
 _Imu = namedtuple('Imu', 'header orientation orientation_covariance angular_velocity angular_velocity_covariance linear_acceleration linear_acceleration_covariance')
-
+_CompressedImage = namedtuple('CompressedImage', 'header format data')
 
 @composite
 def region_of_interest(draw,  # pylint: disable=too-many-arguments
@@ -110,3 +111,27 @@ def imu(draw,
                 linear_acceleration_value,
                 linear_acceleration_covariance_value
                )
+
+
+@composite
+def compressed_image(draw, header=header(), format=sampled_from(['jpg', 'png']), data=array(elements=uint8())):
+    """
+    Generate values for ROS sensor_msgs/CompressedImage.msg.
+
+    Parameters
+    ----------
+    header : hypothesis_ros.std_msgs.header()
+        Strategy to generate header value. (Default: Default hypothesis_ros strategy.)
+    format : hypothesis.strategies.sampled_from()
+        Strategy to generate format value. (Default: Customized hypothesis strategy.)
+    data : hypothesis_ros.message_fields.array()
+        Strategy to generate format value. (Default: Customized to elements of type uint8().)
+
+    """
+    header_value = draw(header)
+    format_value = draw(format)
+    data_value = draw(data)
+    return _CompressedImage(header_value,
+                            format_value,
+                            data_value
+                           )
