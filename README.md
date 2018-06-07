@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ros-testing/hypothesis-ros.svg?branch=master)](https://travis-ci.org/ros-testing/hypothesis-ros)
 [![PyPI version](https://badge.fury.io/py/hypothesis-ros.svg)](https://badge.fury.io/py/hypothesis-ros)
+[![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](http://hypothesis-ros.readthedocs.io/)
 [![GitHub license](https://img.shields.io/github/license/fkromer/hypothesis-ros.svg)](https://github.com/fkromer/hypothesis-ros/blob/master/LICENSE)
 
 Hypothesis strategies for ROS node level property based testing.
