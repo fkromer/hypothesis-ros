@@ -32,6 +32,7 @@ some conflict with Python builtins (e.g. `bool`, `list`).
 
 .. include:: docu.rst
 .. include:: modules.rst
+.. include:: changelog.rst
 
 Indices and tables
 ==================
