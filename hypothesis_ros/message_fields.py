@@ -417,10 +417,10 @@ def array(elements=None, min_size=None, max_size=None, unique_by=None, unique=No
         Minimal size of the array.
     max_size: integer
         Maximal size of the array.
-    unique_by: function
+    unique_by: callable
         Function returning a hashable type when given a value from elements.
         The resulting array (list) will satisfy `unique_by(result[i]) != unique_by(result[j])`.
-    unique: function
+    unique: boolean
         Function returning a hashable type. For comparison of directy object equality.
 
     Returns
