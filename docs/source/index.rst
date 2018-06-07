@@ -22,6 +22,10 @@ The documentation for this library can be found in the `hypothesis documentation
 .. _hypothesis: https://github.com/HypothesisWorks/hypothesis
 .. _hypothesis documentation: https://hypothesis.readthedocs.io/en/latest/index.html
 
+The naming of strategies is according to ROS notation to ease the mapping of the strategies
+to the corresponding ROS data types, messages and parameters. Consider that this implies
+some conflict with Python builtins (e.g. `bool`, `list`).
+
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
