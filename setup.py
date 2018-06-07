@@ -12,7 +12,7 @@ setup(
     name="hypothesis-ros",
     version="0.1.0",
     url="https://github.com/ros-testing/hypothesis-ros",
-    license='GPLv3',
+    license='Apache License 2.0',
     author="Florian Kromer",
     author_email="florian.kromer@mailbox.org",
     description="Property Based Testing for the ROS node level.",
