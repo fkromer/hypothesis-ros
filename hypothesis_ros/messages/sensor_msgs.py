@@ -26,6 +26,19 @@ from hypothesis_ros.message_fields import (  # pylint: disable=redefined-builtin
 _RegionOfInterest = namedtuple('RegionOfInterest', 'x_offset y_offset height width do_rectify')
 _Imu = namedtuple('Imu', 'header orientation orientation_covariance angular_velocity angular_velocity_covariance linear_acceleration linear_acceleration_covariance')
 _CompressedImage = namedtuple('CompressedImage', 'header format data')
+_Image = namedtuple('Image', 'header height width encoding step is_bigendian data')
+
+
+IMAGE_ENCODINGS = ["rgb8", "rgba8", "rgb16", "rgba16", "bgr8", "bgra8", "bgr16", "bgra16",
+                   "mono8", "mono16",
+                   "8UC1", "8UC2", "8UC3", "8UC4", "8SC1", "8SC2", "8SC3", "8SC4",
+                   "16UC1", "16UC2", "16UC3", "16UC4", "16SC1", "16SC2", "16SC3", "16SC4",
+                   "32SC1", "32SC2", "32SC3", "32SC4", "32FC1", "32FC2", "32FC3", "32FC4",
+                   "64FC1", "64FC2", "64FC3", "64FC4",
+                   "bayer_rggb8", "bayer_bggr8", "bayer_gbrg8", "bayer_grbg8",
+                   "bayer_rggb16", "bayer_bggr16", "bayer_gbrg16", "bayer_grbg16",
+                   "yuv422"]
+"""Image message encodings."""
 
 @composite
 def region_of_interest(draw,  # pylint: disable=too-many-arguments
@@ -135,3 +148,46 @@ def compressed_image(draw, header=header(), format=sampled_from(['jpg', 'png']),
                             format_value,
                             data_value
                            )
+
+
+@composite
+def image(draw,
+          header=header(),
+          height=uint32(),
+          width=uint32(),
+          encoding=sampled_from(IMAGE_ENCODINGS),
+          step=uint32(),
+          is_bigendian=uint8(),
+          data=array(elements=uint8(), max_size=10000**10000)):
+    """
+    Generate values for ROS sensor_msgs/Image.msg.
+
+    Be aware that the element count of the "data" field value is not generated dependent on
+    steps and rows right now. Configuration of field "data" element size requires attention
+    to avoid exceptions raised in underlying hypothesis functionality.
+
+    Parameters
+    ----------
+    header : hypothesis_ros.messages.std_msgs.header()
+        Strategy to generate header values. (Default: Default hypothesis_ros strategy.)
+    height : hypothesis_ros.message_fields.uint32()
+        Strategy to generate height value. (Default: Default hypothesis_ros strategy.)
+    width : hypothesis_ros.message_fields.uint32()
+        Strategy to generate width value. (Default: Default hypothesis_ros strategy.)
+    encoding : hypothesis.sampled_from()
+        Strategy to generate encoding value. For possible values refer to
+        include/sensor_msgs/image_encodings.h . (Default: hypothesis strategy with reasonable configuration.)
+    is_bigendian : hypothesis_ros.message_fields.uint8()
+        Strategy to generate bigendian value. (Default: Default hypothesis_ros strategy.)
+    data : hypothesis_ros.message_fields.array(elements=uint8())
+        Strategy to generate matrix data values. Size is steps x rows. (Default: hypothesis_ros strategy with reasonable configuration.)
+
+    """
+    header_value = draw(header)
+    height_value = draw(height)
+    width_value = draw(width)
+    encoding_value = draw(encoding)
+    step_value = draw(step)
+    is_bigendian_value = draw(is_bigendian)
+    data_value = draw(data)
+    return _Image(header_value, height_value, width_value, encoding_value, step_value, is_bigendian_value, data_value)
