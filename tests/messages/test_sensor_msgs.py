@@ -40,7 +40,7 @@ def test_region_of_interest_accepts_customized_strategies(generated_values):
                   stamp=time(secs=uint32(min_value=0, max_value=0),
                              nsecs=uint32(min_value=0, max_value=0)
                             ),
-                  frame_id=float64(min_value=0.0, max_value=0.0)
+                  frame_id=just('some_tf_frame_name')
                  ),
            quaternion(x=float64(min_value=0.0, max_value=0.0),
                       y=float64(min_value=0.0, max_value=0.0),
@@ -62,7 +62,7 @@ def test_region_of_interest_accepts_customized_strategies(generated_values):
       )
 def test_imu_accepts_customized_strategies(generated_values):
     """Exemplary customized imu message fields."""
-    assert generated_values == ((0, (0, 0), 0.0),
+    assert generated_values == ((0, (0, 0), 'some_tf_frame_name'),
                                 (0.0, 0.0, 0.0, 0.0),
                                 [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
                                 (0.0, 0.0, 0.0),
@@ -75,7 +75,7 @@ def test_imu_accepts_customized_strategies(generated_values):
                                stamp=time(secs=uint32(min_value=0, max_value=0),
                                           nsecs=uint32(min_value=0, max_value=0)
                                          ),
-                               frame_id=float64(min_value=0.0, max_value=0.0)
+                               frame_id=just('some_tf_frame_name')
                               ),
                         just('jpg'),
                         array(elements=uint8(min_value=0, max_value=0), min_size=4, max_size=4)
@@ -83,7 +83,7 @@ def test_imu_accepts_customized_strategies(generated_values):
       )
 def test_imu_accepts_customized_strategies(generated_values):
     """Exemplary customized compressed_image message fields."""
-    assert generated_values == ((0, (0, 0), 0.0),
+    assert generated_values == ((0, (0, 0), 'some_tf_frame_name'),
                                 'jpg',
                                 [0, 0,
                                  0, 0])
@@ -93,7 +93,7 @@ def test_imu_accepts_customized_strategies(generated_values):
                     stamp=time(secs=uint32(min_value=0, max_value=0),
                                nsecs=uint32(min_value=0, max_value=0)
                               ),
-                    frame_id=float64(min_value=0.0, max_value=0.0)
+                    frame_id=just('some_tf_frame_name')
                    ),
              uint32(min_value=2, max_value=2),
              uint32(min_value=2, max_value=2),
@@ -105,7 +105,7 @@ def test_imu_accepts_customized_strategies(generated_values):
       )
 def test_image_accepts_customized_strategies(generated_values):
     """Exemplary customized image message fields."""
-    assert generated_values == ((0, (0, 0), 0.0),
+    assert generated_values == ((0, (0, 0), 'some_tf_frame_name'),
                                 2,
                                 2,
                                 'rgb8',

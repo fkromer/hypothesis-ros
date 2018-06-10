@@ -9,7 +9,6 @@ from hypothesis_ros.messages.std_msgs import (
     header,
 )
 from hypothesis_ros.message_fields import (
-    float64,
     uint32,
     time,
 )
@@ -20,9 +19,9 @@ from hypothesis_ros.message_fields import (
                         secs=uint32(min_value=0.0, max_value=0.0),
                         nsecs=uint32(min_value=0.0, max_value=0.0)
                     ),
-              frame_id=float64(min_value=0.0, max_value=0.0)
+              frame_id=just('some_tf_frame_name')
              )
       )
 def test_header_accepts_customized_strategies(generated_value):
     """Exemplary customized header."""
-    assert generated_value == (0, (0, 0), 0.0)
+    assert generated_value == (0, (0, 0), 'some_tf_frame_name')
