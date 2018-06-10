@@ -11,9 +11,11 @@ Provides hypothesis strategies for `ROS geometry_msgs`_.
 from collections import namedtuple
 from hypothesis.strategies import composite
 
+from hypothesis_ros.messages.std_msgs import header, _Header
 from hypothesis_ros.message_fields import (
     array,
-    float64
+    float64,
+    string
 )
 
 _Point = namedtuple('Point', 'x y z')
@@ -21,6 +23,7 @@ _Quaternion = namedtuple('Quaternion', 'x y z w')
 _Pose = namedtuple('Pose', 'position orientation')
 _PoseWithCovariance = namedtuple('PoseWithCovariance', 'pose covariance')
 _Transform = namedtuple('Transform', 'translation rotation')
+_TransformStamed = namedtuple('TransformStamed', 'header child_frame_id transform')
 _Vector3 = namedtuple('Vector3', 'x y z')
 
 @composite
@@ -138,3 +141,27 @@ def transform(draw, translation=vector3(), rotation=quaternion()):
     assert isinstance(translation_value, _Vector3), 'drew invalid translation={translation_value} from {translation} for _Vector3 field'.format(translation_value, translation)
     assert isinstance(rotation_value, _Quaternion), 'drew invalid rotation={rotation_value} from {rotation} for _Quaternion field'.format(rotation_value, rotation)
     return _Transform(translation_value, rotation_value)
+
+
+@composite
+def transform_stamped(draw, header=header(), child_frame_id=string(), transform=transform()):
+    """
+    Generate value for ROS geometry message type "TransformStamped".
+
+    Parameters
+    ----------
+    header : hypothesis_ros.messages.std_msgs.header()
+        Strategy to generate header value. (Default: Default hypothesis-ros strategy.)
+    child_frame_id : hypothesis_ros.message_fields.string()
+        Strategy to generate child_frame_id value. (Default: Default hypothesis-ros strategy.)
+    transform : hypothesis_ros.messages.geometry_msgs.transform()
+        Strategy to generate transform value. (Default: Default hypothesis-ros strategy.)
+
+    """
+    header_value = draw(header)
+    child_frame_id_value = draw(child_frame_id)
+    transform_value = draw(transform)
+    assert isinstance(header_value, _Header), 'drew invalid header={header_value} from {header} for _Header field'.format(header_value, header)
+    assert isinstance(child_frame_id_value, str), 'drew invalid child_frame_id={child_frame_id_value} from {child_frame_id} for string field'.format(child_frame_id_value, child_frame_id)
+    assert isinstance(transform_value, _Transform),  'drew invalid transform={transform_value} from {transform} for _Transform field'.format(transform_value, transform)
+    return _TransformStamed(header_value, child_frame_id_value, transform_value)
