@@ -10,7 +10,7 @@ with open('test-requirements.txt') as f:
 
 setup(
     name="hypothesis-ros",
-    version="0.2.0",
+    version="0.2.1",
     url="https://github.com/ros-testing/hypothesis-ros",
     license='Apache License 2.0',
     author="Florian Kromer",
@@ -24,7 +24,7 @@ setup(
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: Apache Software License 2.0',
+        'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',

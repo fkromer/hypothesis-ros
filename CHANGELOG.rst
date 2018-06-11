@@ -3,6 +3,11 @@
 Changelog
 =========
 
+v0.2.1
+------
+
+- fix invalid classifier for License
+
 v0.2.0
 ------
 
