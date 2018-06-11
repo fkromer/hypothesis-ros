@@ -6,7 +6,23 @@ Changelog
 v0.2.0
 ------
 
-Unreleased
+- add strategies for
+  - CompressedImage.msg
+  - DisparityImage.msg
+  - Image.msg
+  - Imu.msg
+  - PoseWithCovariance.msg
+  - RegionOfInterest.msg
+  - TFMessage.msg
+  - TransformStamped.msg
+- fix field frame_id in strategy Header.msg
+- add validation in message field strategies
+- refactor dublication of parameter strategies
+- add missing tests for geometry_msgs
+- add and cleanup tox environments
+- change license to Apache 2
+- fix docstrings
+- improve docs
 
 v0.1.0
 ------
