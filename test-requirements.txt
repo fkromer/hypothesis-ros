@@ -3,6 +3,7 @@ pycodestyle>=2.3.1
 pydocstyle>=2.1.1
 sphinx>=1.7.2
 pytest>=3.5.0
+pytest-cov>=2.5.1
 # hypothesis>=3.56.0  # already in requirements.txt
 tox>=3.0.0
 tox-travis>=0.10
