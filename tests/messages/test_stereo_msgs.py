@@ -19,54 +19,55 @@ from hypothesis_ros.message_fields import (
 )
 
 
-@given(disparity_image(header(seq=uint32(min_value=0.0, max_value=0.0),
-              stamp=time(
-                        secs=uint32(min_value=0.0, max_value=0.0),
-                        nsecs=uint32(min_value=0.0, max_value=0.0)
-                    ),
-              frame_id=just('some_tf_frame_name')
-             ),
-       image(header(seq=uint32(min_value=0, max_value=0),
-                    stamp=time(secs=uint32(min_value=0, max_value=0),
-                               nsecs=uint32(min_value=0, max_value=0)
-                              ),
-                    frame_id=just('some_tf_frame_name')
-                   ),
-             uint32(min_value=2, max_value=2),
-             uint32(min_value=2, max_value=2),
-             just('rgb8'),
-             uint32(min_value=0, max_value=0),
-             uint8(min_value=0, max_value=0),
-             array(elements=uint8(min_value=0, max_value=0), min_size=4, max_size=4)
-            ),
-       float32(min_value=0.0, max_value=0.0),
-       float32(min_value=0.0, max_value=0.0),
-       region_of_interest(x_offset=uint32(min_value=0, max_value=0),
-                          y_offset=uint32(min_value=0, max_value=0),
-                          height=uint32(min_value=0, max_value=0),
-                          width=uint32(min_value=0, max_value=0),
-                          do_rectify=just(True)
-                         ),
-       float32(min_value=0.0, max_value=0.0),
-       float32(min_value=0.0, max_value=0.0),
-       float32(min_value=0.0, max_value=0.0)
-      )
+@given(disparity_image(
+           header(seq=uint32(min_value=0, max_value=0),
+                  stamp=time(
+                      secs=uint32(min_value=1, max_value=1),
+                      nsecs=uint32(min_value=2, max_value=2)
+                  ),
+                  frame_id=just('some_tf_frame_name')
+                 ),
+           image(header(seq=uint32(min_value=0, max_value=0),
+                        stamp=time(secs=uint32(min_value=1, max_value=1),
+                                   nsecs=uint32(min_value=2, max_value=2)
+                                  ),
+                        frame_id=just('some_tf_frame_name')
+                       ),
+                 uint32(min_value=1, max_value=1),
+                 uint32(min_value=2, max_value=2),
+                 just('rgb8'),
+                 uint32(min_value=3, max_value=3),
+                 uint8(min_value=4, max_value=4),
+                 array(elements=uint8(min_value=0, max_value=0), min_size=4, max_size=4)
+                ),
+           float32(min_value=1.0, max_value=1.0),
+           float32(min_value=2.0, max_value=2.0),
+           region_of_interest(x_offset=uint32(min_value=1, max_value=1),
+                              y_offset=uint32(min_value=2, max_value=2),
+                              height=uint32(min_value=3, max_value=3),
+                              width=uint32(min_value=4, max_value=4),
+                              do_rectify=just(True)
+                             ),
+           float32(min_value=3.0, max_value=3.0),
+           float32(min_value=4.0, max_value=4.0),
+           float32(min_value=5.0, max_value=5.0)
+          )
 )
 def test_disparity_image_accepts_customized_strategies(generated_value):
     """Exemplary customized disparity_image."""
-    assert generated_value == ((0, (0, 0), 'some_tf_frame_name'),
-                               ((0, (0, 0), 'some_tf_frame_name'),
-                                2,
+    assert generated_value == ((0, (1, 2), 'some_tf_frame_name'),
+                               ((0, (1, 2), 'some_tf_frame_name'),
+                                1,
                                 2,
                                 'rgb8',
-                                0,
-                                0,
+                                3,
+                                4,
                                 [0, 0,
                                  0, 0]),
-                               0.0,
-                               0.0,
-                               (0, 0, 0, 0, True),
-                               0.0,
-                               0.0,
-                               0.0
+                               1.0,
+                               2.0,
+                               (1, 2, 3, 4, True),
+                               3.0,
+                               4.0,
+                               5.0
                               )

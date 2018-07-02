@@ -14,14 +14,14 @@ from hypothesis_ros.message_fields import (
 )
 
 
-@given(header(seq=uint32(min_value=0.0, max_value=0.0),
+@given(header(seq=uint32(min_value=0, max_value=0),
               stamp=time(
-                        secs=uint32(min_value=0.0, max_value=0.0),
-                        nsecs=uint32(min_value=0.0, max_value=0.0)
+                        secs=uint32(min_value=1, max_value=1),
+                        nsecs=uint32(min_value=2, max_value=2)
                     ),
               frame_id=just('some_tf_frame_name')
              )
       )
 def test_header_accepts_customized_strategies(generated_value):
     """Exemplary customized header."""
-    assert generated_value == (0, (0, 0), 'some_tf_frame_name')
+    assert generated_value == (0, (1, 2), 'some_tf_frame_name')

@@ -198,6 +198,16 @@ def test_time_generates_in_range_values_per_default(generated_value):
     assert nsecs >= UINT32_MIN_VALUE
     assert nsecs <= UINT32_MAX_VALUE
 
+
+@given(time(secs=uint32(min_value=1, max_value=1),
+            nsecs=uint32(min_value=2, max_value=2))
+)
+def test_time_field_mapping(generated_value):
+    """Verify mapping of time fields."""
+    assert generated_value.secs == 1
+    assert generated_value.nsecs == 2
+
+
 @given(duration())
 def test_duration_generates_in_range_values_per_default(generated_value):
     """Verfiy default generated value range."""
@@ -207,6 +217,16 @@ def test_duration_generates_in_range_values_per_default(generated_value):
     assert secs <= INT32_MAX_VALUE
     assert nsecs >= INT32_MIN_VALUE
     assert nsecs <= INT32_MAX_VALUE
+
+
+@given(duration(secs=uint32(min_value=1, max_value=1),
+                nsecs=uint32(min_value=2, max_value=2))
+)
+def test_duration_field_mapping(generated_value):
+    """Verify mapping of duration fields."""
+    assert generated_value.secs == 1
+    assert generated_value.nsecs == 2
+
 
 ARRAY_ELEMENT_COUNT = 5
 ARRAY_ELEMENT_MIN_VALUE = 1

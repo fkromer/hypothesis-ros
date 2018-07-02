@@ -24,56 +24,56 @@ from hypothesis_ros.message_fields import (
 )
 
 
-@given(region_of_interest(x_offset=uint32(min_value=0, max_value=0),
-                          y_offset=uint32(min_value=0, max_value=0),
-                          height=uint32(min_value=0, max_value=0),
-                          width=uint32(min_value=0, max_value=0),
+@given(region_of_interest(x_offset=uint32(min_value=1, max_value=1),
+                          y_offset=uint32(min_value=2, max_value=2),
+                          height=uint32(min_value=3, max_value=3),
+                          width=uint32(min_value=4, max_value=4),
                           do_rectify=just(True)
                          )
       )
 def test_region_of_interest_accepts_customized_strategies(generated_values):
     """Exemplary customized region_of_interest message fields."""
-    assert generated_values == (0, 0, 0, 0, True)
+    assert generated_values == (1, 2, 3, 4, True)
 
 
 @given(imu(header(seq=uint32(min_value=0, max_value=0),
-                  stamp=time(secs=uint32(min_value=0, max_value=0),
-                             nsecs=uint32(min_value=0, max_value=0)
+                  stamp=time(secs=uint32(min_value=1, max_value=1),
+                             nsecs=uint32(min_value=2, max_value=2)
                             ),
                   frame_id=just('some_tf_frame_name')
                  ),
-           quaternion(x=float64(min_value=0.0, max_value=0.0),
-                      y=float64(min_value=0.0, max_value=0.0),
-                      z=float64(min_value=0.0, max_value=0.0),
-                      w=float64(min_value=0.0, max_value=0.0)
+           quaternion(x=float64(min_value=1.0, max_value=1.0),
+                      y=float64(min_value=2.0, max_value=2.0),
+                      z=float64(min_value=3.0, max_value=3.0),
+                      w=float64(min_value=4.0, max_value=4.0)
                      ),
-           array(elements=float64(min_value=0.0, max_value=0.0), min_size=9, max_size=9),
-           vector3(x=float64(min_value=0.0, max_value=0.0),
-                   y=float64(min_value=0.0, max_value=0.0),
-                   z=float64(min_value=0.0, max_value=0.0)
+           array(elements=float64(min_value=1.0, max_value=1.0), min_size=9, max_size=9),
+           vector3(x=float64(min_value=1.0, max_value=1.0),
+                   y=float64(min_value=2.0, max_value=2.0),
+                   z=float64(min_value=3.0, max_value=3.0)
                   ),
-           array(elements=float64(min_value=0.0, max_value=0.0), min_size=9, max_size=9),
-           vector3(x=float64(min_value=0.0, max_value=0.0),
-                   y=float64(min_value=0.0, max_value=0.0),
-                   z=float64(min_value=0.0, max_value=0.0)
+           array(elements=float64(min_value=2.0, max_value=2.0), min_size=9, max_size=9),
+           vector3(x=float64(min_value=1.0, max_value=1.0),
+                   y=float64(min_value=2.0, max_value=2.0),
+                   z=float64(min_value=3.0, max_value=3.0)
                   ),
-           array(elements=float64(min_value=0.0, max_value=0.0), min_size=9, max_size=9)
+           array(elements=float64(min_value=3.0, max_value=3.0), min_size=9, max_size=9)
           )
       )
 def test_imu_accepts_customized_strategies(generated_values):
     """Exemplary customized imu message fields."""
-    assert generated_values == ((0, (0, 0), 'some_tf_frame_name'),
-                                (0.0, 0.0, 0.0, 0.0),
-                                [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-                                (0.0, 0.0, 0.0),
-                                [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
-                                (0.0, 0.0, 0.0),
-                                [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0])
+    assert generated_values == ((0, (1, 2), 'some_tf_frame_name'),
+                                (1.0, 2.0, 3.0, 4.0),
+                                [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0],
+                                (1.0, 2.0, 3.0),
+                                [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+                                (1.0, 2.0, 3.0),
+                                [3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0])
 
 
 @given(compressed_image(header(seq=uint32(min_value=0, max_value=0),
-                               stamp=time(secs=uint32(min_value=0, max_value=0),
-                                          nsecs=uint32(min_value=0, max_value=0)
+                               stamp=time(secs=uint32(min_value=1, max_value=1),
+                                          nsecs=uint32(min_value=2, max_value=2)
                                          ),
                                frame_id=just('some_tf_frame_name')
                               ),
@@ -81,35 +81,35 @@ def test_imu_accepts_customized_strategies(generated_values):
                         array(elements=uint8(min_value=0, max_value=0), min_size=4, max_size=4)
                        )
       )
-def test_imu_accepts_customized_strategies(generated_values):
+def test_compressed_image_accepts_customized_strategies(generated_values):
     """Exemplary customized compressed_image message fields."""
-    assert generated_values == ((0, (0, 0), 'some_tf_frame_name'),
+    assert generated_values == ((0, (1, 2), 'some_tf_frame_name'),
                                 'jpg',
                                 [0, 0,
                                  0, 0])
 
 
 @given(image(header(seq=uint32(min_value=0, max_value=0),
-                    stamp=time(secs=uint32(min_value=0, max_value=0),
-                               nsecs=uint32(min_value=0, max_value=0)
+                    stamp=time(secs=uint32(min_value=1, max_value=1),
+                               nsecs=uint32(min_value=2, max_value=2)
                               ),
                     frame_id=just('some_tf_frame_name')
                    ),
-             uint32(min_value=2, max_value=2),
+             uint32(min_value=1, max_value=1),
              uint32(min_value=2, max_value=2),
              just('rgb8'),
-             uint32(min_value=0, max_value=0),
-             uint8(min_value=0, max_value=0),
+             uint32(min_value=3, max_value=3),
+             uint8(min_value=4, max_value=4),
              array(elements=uint8(min_value=0, max_value=0), min_size=4, max_size=4)
             )
       )
 def test_image_accepts_customized_strategies(generated_values):
     """Exemplary customized image message fields."""
-    assert generated_values == ((0, (0, 0), 'some_tf_frame_name'),
-                                2,
+    assert generated_values == ((0, (1, 2), 'some_tf_frame_name'),
+                                1,
                                 2,
                                 'rgb8',
-                                0,
-                                0,
+                                3,
+                                4,
                                 [0, 0,
                                  0, 0])
