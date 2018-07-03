@@ -22,6 +22,7 @@ _Point = namedtuple('Point', 'x y z')
 _Quaternion = namedtuple('Quaternion', 'x y z w')
 _Pose = namedtuple('Pose', 'position orientation')
 _PoseWithCovariance = namedtuple('PoseWithCovariance', 'pose covariance')
+_PoseWithCovarianceStamped = namedtuple('PoseWithCovarianceStamped', 'header pose')
 _Transform = namedtuple('Transform', 'translation rotation')
 _TransformStamed = namedtuple('TransformStamed', 'header child_frame_id transform')
 _Vector3 = namedtuple('Vector3', 'x y z')
@@ -100,6 +101,15 @@ def pose_with_covariance(draw, pose=pose(), covariance=array(elements=float64(),
     pose_value, covariance_value= draw(pose), draw(covariance)
     # TODO: add validation for covariance_value
     return _PoseWithCovariance(pose_value, covariance_value)
+
+
+@composite
+def pose_with_covariance_stamped(draw, header=header(), pose_with_covariance=pose_with_covariance()):
+    """
+    Generate value for ROS geometry message type "PoseWithCovarianceStamped".
+    """
+    header_value, pose_with_covariance_value=draw(header), draw(pose_with_covariance)
+    return _PoseWithCovarianceStamped(header_value, pose_with_covariance_value)
 
 
 @composite

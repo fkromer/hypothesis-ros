@@ -10,6 +10,7 @@ from hypothesis_ros.messages.geometry_msgs import (
     point,
     pose,
     pose_with_covariance,
+    pose_with_covariance_stamped,
     vector3,
     quaternion,
     transform,
@@ -85,6 +86,43 @@ def test_pose_with_covariance_accepts_customized_strategies(generated_value):
                                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
                                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
                                ]
+                              )
+
+
+@given(pose_with_covariance_stamped(
+           header(seq=uint32(min_value=0, max_value=0),
+                  stamp=time(
+                      secs=uint32(min_value=0, max_value=0),
+                      nsecs=uint32(min_value=0, max_value=0)
+                  ),
+                  frame_id=just('some_tf_frame_name')
+                 ),
+           pose_with_covariance(pose(position=point(x=float64(min_value=1.0, max_value=1.0),
+                                                    y=float64(min_value=2.0, max_value=2.0),
+                                                    z=float64(min_value=3.0, max_value=3.0)
+                                                   ),
+                                     orientation=quaternion(x=float64(min_value=1.0, max_value=1.0),
+                                                            y=float64(min_value=2.0, max_value=2.0),
+                                                            z=float64(min_value=3.0, max_value=3.0),
+                                                            w=float64(min_value=4.0, max_value=4.0)
+                                                           )
+                                    ),
+                                array(elements=float64(min_value=0.0, max_value=0.0), min_size=36, max_size=36)
+                               )
+       )
+)
+def test_pose_with_covariance_stamped_accepts_customized_strategies(generated_value):
+    """Exemplary customized pose_with_covariance_stamped."""
+    assert generated_value == ((0, (0, 0), 'some_tf_frame_name'),
+                               (((1.0, 2.0, 3.0), (1.0, 2.0, 3.0, 4.0)),
+                                [0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+                                 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+                                ]
+                               )
                               )
 
 
