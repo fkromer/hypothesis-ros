@@ -21,12 +21,14 @@ from hypothesis_ros.message_fields import (  # pylint: disable=redefined-builtin
     time,
     uint8,
     uint32,
+    string,
 )
 
 _RegionOfInterest = namedtuple('RegionOfInterest', 'x_offset y_offset height width do_rectify')
 _Imu = namedtuple('Imu', 'header orientation orientation_covariance angular_velocity angular_velocity_covariance linear_acceleration linear_acceleration_covariance')
 _CompressedImage = namedtuple('CompressedImage', 'header format data')
 _Image = namedtuple('Image', 'header height width encoding step is_bigendian data')
+_CameraInfo = namedtuple('CameraInfo', 'header height width distortion_model D K R P binning_x binning_y roi')
 
 
 IMAGE_ENCODINGS = ["rgb8", "rgba8", "rgb16", "rgba16", "bgr8", "bgra8", "bgr16", "bgra16",
@@ -191,3 +193,45 @@ def image(draw,
     is_bigendian_value = draw(is_bigendian)
     data_value = draw(data)
     return _Image(header_value, height_value, width_value, encoding_value, step_value, is_bigendian_value, data_value)
+
+
+@composite
+def camera_info(draw,
+                header=header(),
+                height=uint32(),
+                width=uint32(),
+                distortion_model=string(),
+                D=array(elements=float64()),
+                K=array(elements=float64(), min_size=9, max_size=9),
+                R=array(elements=float64(), min_size=9, max_size=9),
+                P=array(elements=float64(), min_size=12, max_size=12),
+                binning_x=uint32(),
+                binning_y=uint32(),
+                roi=region_of_interest()
+               ):
+    """
+    Generate values for ROS sensor_msgs/CameraInfo.msg.
+    """
+    header_value = draw(header)
+    height_value = draw(height)
+    width_value = draw(width)
+    distortion_model_value = draw(distortion_model)
+    d_value = draw(D)
+    k_value = draw(K)
+    r_value = draw(R)
+    p_value = draw(P)
+    binning_x_value = draw(binning_x)
+    binning_y_value = draw(binning_y)
+    roi_value = draw(roi)
+    return _CameraInfo(header_value,
+                       height_value,
+                       width_value,
+                       distortion_model_value,
+                       d_value,
+                       k_value,
+                       r_value,
+                       p_value,
+                       binning_x_value,
+                       binning_y_value,
+                       roi_value
+                      )

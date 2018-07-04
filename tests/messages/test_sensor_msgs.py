@@ -9,7 +9,8 @@ from hypothesis_ros.messages.sensor_msgs import (
     compressed_image,
     image,
     imu,
-    region_of_interest
+    region_of_interest,
+    camera_info,
 )
 from hypothesis_ros.messages.geometry_msgs import vector3, quaternion
 from hypothesis_ros.messages.std_msgs import header
@@ -113,3 +114,42 @@ def test_image_accepts_customized_strategies(generated_values):
                                 4,
                                 [0, 0,
                                  0, 0])
+
+
+@given(camera_info(header(seq=uint32(min_value=0, max_value=0),
+                          stamp=time(secs=uint32(min_value=1, max_value=1),
+                                     nsecs=uint32(min_value=2, max_value=2)
+                                    ),
+                          frame_id=just('some_tf_frame_name')
+                         ),
+                   uint32(min_value=1, max_value=1),
+                   uint32(min_value=2, max_value=2),
+                   just('some_distortion_model_string'),
+                   array(elements=float64(min_value=1.0, max_value=1.0), min_size=1, max_size=1),
+                   array(elements=float64(min_value=2.0, max_value=2.0), min_size=9, max_size=9),
+                   array(elements=float64(min_value=3.0, max_value=3.0), min_size=9, max_size=9),
+                   array(elements=float64(min_value=4.0, max_value=4.0), min_size=12, max_size=12),
+                   uint32(min_value=3, max_value=3),
+                   uint32(min_value=4, max_value=4),
+                   region_of_interest(x_offset=uint32(min_value=1, max_value=1),
+                                      y_offset=uint32(min_value=2, max_value=2),
+                                      height=uint32(min_value=3, max_value=3),
+                                      width=uint32(min_value=4, max_value=4),
+                                      do_rectify=just(True)
+                                     )
+                  )
+)
+def test_camera_info_accepts_customized_strategies(generated_values):
+    """Exemplary customized image message fields."""
+    assert generated_values == ((0, (1, 2), 'some_tf_frame_name'),
+                                1,
+                                2,
+                                'some_distortion_model_string',
+                                [1.0],
+                                [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0],
+                                [3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0, 3.0],
+                                [4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0, 4.0],
+                                3,
+                                4,
+                                (1, 2, 3, 4, True)
+                               )
