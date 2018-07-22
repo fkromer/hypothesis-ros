@@ -4,7 +4,7 @@
 # Source files
 # ============
 *.pxd		text
-*.py 		text
+*.py 		text    diff=python
 *.py3 		text
 *.pyw 		text
 *.pyx  		text
