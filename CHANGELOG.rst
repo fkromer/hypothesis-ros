@@ -3,6 +3,14 @@
 Changelog
 =========
 
+v0.3.0
+------
+
+- add strategies for
+  - CameraInfo.msg
+  - PoseWithCovarianceStamped.msg
+- improve tests
+
 v0.2.1
 ------
 
