@@ -7,8 +7,10 @@ v0.3.0
 ------
 
 - add strategies for
-  - CameraInfo.msg
-  - PoseWithCovarianceStamped.msg
+
+ - CameraInfo.msg
+ - PoseWithCovarianceStamped.msg
+
 - improve tests
 
 v0.2.1
@@ -20,14 +22,16 @@ v0.2.0
 ------
 
 - add strategies for
-  - CompressedImage.msg
-  - DisparityImage.msg
-  - Image.msg
-  - Imu.msg
-  - PoseWithCovariance.msg
-  - RegionOfInterest.msg
-  - TFMessage.msg
-  - TransformStamped.msg
+
+ - CompressedImage.msg
+ - DisparityImage.msg
+ - Image.msg
+ - Imu.msg
+ - PoseWithCovariance.msg
+ - RegionOfInterest.msg
+ - TFMessage.msg
+ - TransformStamped.msg
+
 - fix field frame_id in strategy Header.msg
 - add validation in message field strategies
 - refactor dublication of parameter strategies

@@ -3,13 +3,19 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to hypothesis-ros
-=========================
+hypothesis-ros
+==============
 
-.. image:: _static/logo_full.jpg
-    :alt: hypothesis-ros: property based ROS node level testing
-    :scale: 50 %
-    :align: right
+Property Based Testing for the ROS node level.
+
+.. image:: https://img.shields.io/pypi/wheel/hypothesis-ros.svg
+    :target: https://pypi.org/project/hypothesis-ros/
+
+.. image:: https://img.shields.io/pypi/pyversions/hypothesis-ros.svg
+    :target: https://pypi.org/project/hypothesis-ros/
+
+.. image:: https://img.shields.io/pypi/l/hypothesis-ros.svg
+    :target: https://pypi.org/project/hypothesis-ros/
 
 `hypothesis-ros` looks small and cute. But it is one of those libraries on the dark side of power.
 It can be very powerful and very nasty. It enables property-based testing
@@ -26,13 +32,40 @@ The naming of strategies is according to ROS notation to ease the mapping of the
 to the corresponding ROS data types, messages and parameters. Consider that this implies
 some conflict with Python builtins (e.g. `bool`, `list`).
 
+The User's Guide
+----------------
+
+This section is about configuration and integration considerations. To get hints about
+how to use the data generators of this package refer to the API documentation and the
+`tests directory of the package source code repository`_.
+
+.. _tests directory of the package source code repository: https://github.com/ros-testing/hypothesis-ros/tree/master/tests
+
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-.. include:: docu.rst
-.. include:: modules.rst
-.. include:: changelog.rst
+   docu
+
+The API Documentation
+---------------------
+
+If you are looking for information on a specific function, class, or method,
+this part of the documentation is for you.
+
+.. toctree::
+   :maxdepth: 3
+
+   api
+
+The Changelog
+-------------
+
+If you are interested in how this package evolved over time look into here.
+
+.. toctree::
+   :maxdepth: 1
+
+   changes
 
 Indices and tables
 ==================

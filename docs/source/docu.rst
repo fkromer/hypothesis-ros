@@ -1,3 +1,5 @@
+.. _docu:
+
 User's Guide
 ============
 
