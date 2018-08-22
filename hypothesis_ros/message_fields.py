@@ -87,7 +87,7 @@ def bool():  # pylint: disable=redefined-builtin
 
     Returns
     -------
-    hypothesis.strategies.booleans()
+    :func:`hypothesis.strategies.booleans()`
         Strategy with preconfigured default values.
 
     """
@@ -108,7 +108,7 @@ def int8(min_value=INT8_MIN_VALUE, max_value=INT8_MAX_VALUE):
 
     Returns
     -------
-    hypothesis.strategies.integers()
+    :func:`hypothesis.strategies.integers()`
         Strategy with preconfigured default values.
 
     """
@@ -130,7 +130,7 @@ def uint8(min_value=UINT8_MIN_VALUE, max_value=UINT8_MAX_VALUE):
 
     Returns
     -------
-    hypothesis.strategies.integers()
+    :func:`hypothesis.strategies.integers()`
         Strategy with preconfigured default values.
 
     """
@@ -152,7 +152,7 @@ def int16(min_value=INT16_MIN_VALUE, max_value=INT16_MAX_VALUE):
 
     Returns
     -------
-    hypothesis.strategies.integers()
+    :func:`hypothesis.strategies.integers()`
         Strategy with preconfigured default values.
 
     """
@@ -174,7 +174,7 @@ def uint16(min_value=UINT16_MIN_VALUE, max_value=UINT16_MAX_VALUE):
 
     Returns
     -------
-    hypothesis.strategies.integers()
+    :func:`hypothesis.strategies.integers()`
         Strategy with preconfigured default values.
 
     """
@@ -196,7 +196,7 @@ def int32(min_value=INT32_MIN_VALUE, max_value=INT32_MAX_VALUE):
 
     Returns
     -------
-    hypothesis.strategies.integers()
+    :func:`hypothesis.strategies.integers()`
         Strategy with preconfigured default values.
 
     """
@@ -218,7 +218,7 @@ def uint32(min_value=UINT32_MIN_VALUE, max_value=UINT32_MAX_VALUE):
 
     Returns
     -------
-    hypothesis.strategies.integers()
+    :func:`hypothesis.strategies.integers()`
         Strategy with preconfigured default values.
 
     """
@@ -240,7 +240,7 @@ def int64(min_value=INT64_MIN_VALUE, max_value=INT64_MAX_VALUE):
 
     Returns
     -------
-    hypothesis.strategies.integers()
+    :func:`hypothesis.strategies.integers()`
         Strategy with preconfigured default values.
 
     """
@@ -262,7 +262,7 @@ def uint64(min_value=UINT64_MIN_VALUE, max_value=UINT64_MAX_VALUE):
 
     Returns
     -------
-    hypothesis.strategies.integers()
+    :func:`hypothesis.strategies.integers()`
         Strategy with preconfigured default values.
 
     """
@@ -292,7 +292,7 @@ def float32(min_value=FLOAT32_MIN_VALUE, max_value=FLOAT32_MAX_VALUE,
 
     Returns
     -------
-    hypothesis.strategies.floats()
+    :func:`hypothesis.strategies.floats()`
         Strategy with preconfigured default values.
 
     """
@@ -322,7 +322,7 @@ def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE,
 
     Returns
     -------
-    hypothesis.strategies.floats()
+    :func:`hypothesis.strategies.floats()`
         Strategy with preconfigured default values.
 
     """
@@ -344,7 +344,7 @@ def string(min_size=STRING_MIN_SIZE, max_size=STRING_MAX_SIZE):
 
     Returns
     -------
-    hypothesis.strategies.binary()
+    :func:`hypothesis.strategies.binary()`
         Strategy with preconfigured default values.
 
     """
@@ -367,7 +367,7 @@ def time(draw, secs=uint32(), nsecs=uint32()):
 
     Returns
     -------
-    _Time()
+    _Time()  # TODO :class:`hypothesis_ros.message_fields._Time()`
         Strategy with preconfigured default values.
 
     """

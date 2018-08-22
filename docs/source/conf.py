@@ -40,6 +40,7 @@ release = u'0.3.0'
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.intersphinx',
     'sphinx.ext.viewcode',
     'sphinx.ext.napoleon'
 ]
@@ -168,3 +169,9 @@ texinfo_documents = [
 
 
 # -- Extension configuration -------------------------------------------------
+
+# intersphinx: map docs hyperlinks to keys
+# http://www.sphinx-doc.org/en/master/usage/extensions/intersphinx.html#confval-intersphinx_mapping
+intersphinx_mapping = {
+    'hypothesis': ('https://hypothesis.readthedocs.io/en/latest/', None),  # hypothesis has no versioned docs
+}
