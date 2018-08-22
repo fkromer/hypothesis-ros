@@ -1,12 +1,7 @@
-.. hypothesis-ros documentation master file, created by
-   sphinx-quickstart on Sun Apr 15 12:00:41 2018.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
 hypothesis-ros
 ==============
 
-Property Based Testing for the ROS node level.
+Data generators for Property Based Testing and Fuzzy Testing of ROS nodes.
 
 .. image:: https://img.shields.io/pypi/wheel/hypothesis-ros.svg
     :target: https://pypi.org/project/hypothesis-ros/
@@ -22,7 +17,7 @@ It can be very powerful and very nasty. It enables property-based testing
 on the ROS node level. It provides generators for message data fields, parameters
 and message fields of a growing number of messages.
 
-hypothesis-ros depends on property based testing framework `hypothesis`_.
+`hypothesis-ros` depends on property based testing framework `hypothesis`_.
 The documentation for this library can be found in the `hypothesis documentation`_.
 
 .. _hypothesis: https://github.com/HypothesisWorks/hypothesis

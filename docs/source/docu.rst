@@ -3,6 +3,29 @@
 User's Guide
 ============
 
+Minimal Example
+---------------
+
+.. code-block:: bash
+
+    ❯ pip install ipython
+    ❯ ipython
+    In [1]: from hypothesis_ros.message_fields import int16
+    In [2]: int16().example()
+    Out[2]:-32183
+    In [3]: int16(min_value=5, max_value=5).example()
+    Out[3]: 5
+
+
+Jupyter Notebook Examples
+-------------------------
+
+.. code-block:: bash
+
+    ❯ pip install jupyter
+    ❯ cd docs/source/notebooks/
+    ❯ jupyter lab
+
 Compatibility with Python interpreters
 --------------------------------------
 
