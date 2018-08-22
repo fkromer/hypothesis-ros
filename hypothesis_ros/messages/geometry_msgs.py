@@ -24,7 +24,7 @@ _Pose = namedtuple('Pose', 'position orientation')
 _PoseWithCovariance = namedtuple('PoseWithCovariance', 'pose covariance')
 _PoseWithCovarianceStamped = namedtuple('PoseWithCovarianceStamped', 'header pose')
 _Transform = namedtuple('Transform', 'translation rotation')
-_TransformStamed = namedtuple('TransformStamed', 'header child_frame_id transform')
+_TransformStamped = namedtuple('TransformStamped', 'header child_frame_id transform')
 _Vector3 = namedtuple('Vector3', 'x y z')
 
 @composite
@@ -174,4 +174,4 @@ def transform_stamped(draw, header=header(), child_frame_id=string(), transform=
     assert isinstance(header_value, _Header), 'drew invalid header={header_value} from {header} for _Header field'.format(header_value, header)
     assert isinstance(child_frame_id_value, str), 'drew invalid child_frame_id={child_frame_id_value} from {child_frame_id} for string field'.format(child_frame_id_value, child_frame_id)
     assert isinstance(transform_value, _Transform),  'drew invalid transform={transform_value} from {transform} for _Transform field'.format(transform_value, transform)
-    return _TransformStamed(header_value, child_frame_id_value, transform_value)
+    return _TransformStamped(header_value, child_frame_id_value, transform_value)
