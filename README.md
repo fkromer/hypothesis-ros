@@ -9,15 +9,15 @@ Data generators for Property Based Testing and Fuzzy Testing of ROS nodes.
 
 ## Installation
 
-   ❯ pip install hypothesis-ros
+    ❯ pip install hypothesis-ros
 
 ## Documentation
 
 Refer to the documentation on [hypothesis-ros.readthedocs.io](https://hypothesis-ros.readthedocs.io), consult the interactive help in your IDE or the help in your interactive Python session:
 
-   ❯ ipython
-   In [1]: from hypothesis_ros import message_fields
-   In [2]: message_fields?
-   (module documentation)
-   In [3]: message_fields.<TAB-replacement>?
-   (documentation of strategies, etc.)
+    ❯ ipython
+    In [1]: from hypothesis_ros import message_fields
+    In [2]: message_fields?
+    (module documentation)
+    In [3]: message_fields.<TAB-replacement>?
+    (documentation of strategies, etc.)
