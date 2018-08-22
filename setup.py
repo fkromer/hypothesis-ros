@@ -10,12 +10,12 @@ with open('test-requirements.txt') as f:
 
 setup(
     name="hypothesis-ros",
-    version="0.2.1",
+    version="0.3.0",
     url="https://github.com/ros-testing/hypothesis-ros",
     license='Apache License 2.0',
     author="Florian Kromer",
     author_email="florian.kromer@mailbox.org",
-    description="Property Based Testing for the ROS node level.",
+    description="Data generators for Property Based Testing and Fuzzy Testing of ROS nodes.",
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     packages=find_packages(),
