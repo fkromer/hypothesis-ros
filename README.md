@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ros-testing/hypothesis-ros.svg?branch=master)](https://travis-ci.org/ros-testing/hypothesis-ros)
 [![Coverage Status](https://coveralls.io/repos/github/ros-testing/hypothesis-ros/badge.svg?branch=master)](https://coveralls.io/github/ros-testing/hypothesis-ros?branch=master)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/eb6e934da2554becb7923fd55c77fa3c)](https://www.codacy.com/project/fkromer/hypothesis-ros/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ros-testing/hypothesis-ros&amp;utm_campaign=Badge_Grade_Dashboard)
 [![PyPI version](https://badge.fury.io/py/hypothesis-ros.svg)](https://badge.fury.io/py/hypothesis-ros)
 [![Read the Docs](https://img.shields.io/readthedocs/pip.svg)](http://hypothesis-ros.readthedocs.io/)
 [![GitHub license](https://img.shields.io/github/license/fkromer/hypothesis-ros.svg)](https://github.com/fkromer/hypothesis-ros/blob/master/LICENSE)
