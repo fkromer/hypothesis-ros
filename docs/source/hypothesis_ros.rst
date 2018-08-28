@@ -6,6 +6,7 @@ Subpackages
 
 .. toctree::
 
+    hypothesis_ros.converters
     hypothesis_ros.messages
 
 Submodules
