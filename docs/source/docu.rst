@@ -31,6 +31,7 @@ Compatibility with Python interpreters
 
 `hypothesis-ros` uses `hypothesis` which implies the compatibility with Python interpreters.
 Hypothesis is supported and tested on CPython 2.7 and CPython 3.4+ (`hypothesis docs python versions`_).
+However `hypothesis-ros` is only tested against the main ROS1 Python v2.7.
 
 .. _hypothesis docs python versions: https://hypothesis.readthedocs.io/en/latest/supported.html#python-versions
 
