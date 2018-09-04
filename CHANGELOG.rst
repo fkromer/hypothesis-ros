@@ -45,7 +45,7 @@ v0.1.0
 ------
 
 Initial quick and dirty implementation of hypothesis strategies
-for ROS msg field types, ROS parameter types and ROS msgs.
+for ROS1 msg field types, ROS1 parameter types and ROS1 msgs.
 
 buildin msg field types:
 

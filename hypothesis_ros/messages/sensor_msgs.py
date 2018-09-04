@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Provides hypothesis strategies for `ROS sensor_msgs`_.
+Provides hypothesis strategies for `ROS1 sensor_msgs`_.
 
-.. _ROS sensor_msgs:
+.. _ROS1 sensor_msgs:
    http://wiki.ros.org/sensor_msgs
 
 """
@@ -50,7 +50,7 @@ def region_of_interest(draw,  # pylint: disable=too-many-arguments
                        width=uint32(),
                        do_rectify=bool()):  # pylint: disable=no-value-for-parameter
     """
-    Generate values for ROS sensor_msgs/RegionOfInterest.msg.
+    Generate values for ROS1 sensor_msgs/RegionOfInterest.msg.
 
     Parameters
     ----------
@@ -90,7 +90,7 @@ def imu(draw,
         linear_acceleration_covariance=array(elements=float64(), min_size=9, max_size=9)
        ):
     """
-    Generate values for ROS sensor_msgs/Imu.msg.
+    Generate values for ROS1 sensor_msgs/Imu.msg.
 
     Parameters
     ----------
@@ -131,7 +131,7 @@ def imu(draw,
 @composite
 def compressed_image(draw, header=header(), format=sampled_from(['jpg', 'png']), data=array(elements=uint8())):
     """
-    Generate values for ROS sensor_msgs/CompressedImage.msg.
+    Generate values for ROS1 sensor_msgs/CompressedImage.msg.
 
     Parameters
     ----------
@@ -162,7 +162,7 @@ def image(draw,
           is_bigendian=uint8(),
           data=array(elements=uint8(), max_size=10000**10000)):
     """
-    Generate values for ROS sensor_msgs/Image.msg.
+    Generate values for ROS1 sensor_msgs/Image.msg.
 
     Be aware that the element count of the "data" field value is not generated dependent on
     steps and rows right now. Configuration of field "data" element size requires attention
@@ -210,7 +210,7 @@ def camera_info(draw,
                 roi=region_of_interest()
                ):
     """
-    Generate values for ROS sensor_msgs/CameraInfo.msg.
+    Generate values for ROS1 sensor_msgs/CameraInfo.msg.
     """
     header_value = draw(header)
     height_value = draw(height)

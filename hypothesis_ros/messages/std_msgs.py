@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Provides hypothesis strategies for `ROS std_msgs`_.
+Provides hypothesis strategies for `ROS1 std_msgs`_.
 
-.. _ROS std_msgs:
+.. _ROS1 std_msgs:
    http://wiki.ros.org/std_msgs
 
 """
@@ -22,7 +22,7 @@ _Header = namedtuple('Header', 'seq stamp frame_id')
 @composite
 def header(draw, seq=uint32(), stamp=time(), frame_id=string()):
     """
-    Generate value for ROS standard message type "header".
+    Generate value for ROS1 standard message type "header".
 
     Parameters
     ----------

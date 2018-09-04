@@ -15,7 +15,7 @@ setup(
     license='Apache License 2.0',
     author="Florian Kromer",
     author_email="florian.kromer@mailbox.org",
-    description="Data generators for Property Based Testing and Fuzzy Testing of ROS nodes.",
+    description="Data generators for Property Based Testing and Fuzzy Testing of ROS1 nodes.",
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     packages=find_packages(),

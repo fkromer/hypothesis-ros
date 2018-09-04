@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Provides hypothesis strategies for `ROS parameter types`_.
+Provides hypothesis strategies for `ROS1 parameter types`_.
 
-.. _ROS parameter types:
+.. _ROS1 parameter types:
    http://wiki.ros.org/Parameter%20Server#Parameter_Types
 
 """
@@ -34,7 +34,7 @@ DOUBLE_MAX_VALUE = +3.4028235e+38
 @defines_strategy
 def date(min_value=DATE_MIN_VALUE, max_value=DATE_MAX_VALUE):
     """
-    Generate value for ROS parameter type "date".
+    Generate value for ROS1 parameter type "date".
 
     Parameters
     ----------
@@ -56,7 +56,7 @@ def date(min_value=DATE_MIN_VALUE, max_value=DATE_MAX_VALUE):
 def double(min_value=DOUBLE_MIN_VALUE, max_value=DOUBLE_MAX_VALUE,
             allow_nan=False, allow_infinity=False):
     """
-    Generate value for ROS paramter type "double".
+    Generate value for ROS1 paramter type "double".
 
     Parameters
     ----------

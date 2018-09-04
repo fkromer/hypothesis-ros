@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Provides hypothesis strategies for `ROS tf2_msgs`_.
+Provides hypothesis strategies for `ROS1 tf2_msgs`_.
 
-.. _ROS tf2_msgs:
+.. _ROS1 tf2_msgs:
    http://wiki.ros.org/tf2_msgs
 
 """
@@ -22,7 +22,7 @@ _TFMessage = namedtuple('TFMessage', 'transforms')
 @composite
 def tfmessage(draw, transforms=array(elements=transform_stamped())):
     """
-    Generate value for ROS TFMessage.
+    Generate value for ROS1 TFMessage.
 
     Parameters
     ----------

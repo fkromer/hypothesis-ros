@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Provides hypothesis strategies for `ROS message fields`_.
+Provides hypothesis strategies for `ROS1 message fields`_.
 
-.. _ROS message fields:
+.. _ROS1 message fields:
    http://wiki.ros.org/msg#Fields
 
 """
@@ -83,7 +83,7 @@ _Duration = namedtuple('Duration', 'secs nsecs')
 @defines_strategy
 def bool():  # pylint: disable=redefined-builtin
     """
-    Generate value for ROS builtin message type "bool".
+    Generate value for ROS1 builtin message type "bool".
 
     Returns
     -------
@@ -97,7 +97,7 @@ def bool():  # pylint: disable=redefined-builtin
 @defines_strategy
 def int8(min_value=INT8_MIN_VALUE, max_value=INT8_MAX_VALUE):
     """
-    Generate value for ROS builtin message type "int8".
+    Generate value for ROS1 builtin message type "int8".
 
     Parameters
     ----------
@@ -119,7 +119,7 @@ def int8(min_value=INT8_MIN_VALUE, max_value=INT8_MAX_VALUE):
 @defines_strategy
 def uint8(min_value=UINT8_MIN_VALUE, max_value=UINT8_MAX_VALUE):
     """
-    Generate value for ROS builtin message type "uint8".
+    Generate value for ROS1 builtin message type "uint8".
 
     Parameters
     ----------
@@ -141,7 +141,7 @@ def uint8(min_value=UINT8_MIN_VALUE, max_value=UINT8_MAX_VALUE):
 @defines_strategy
 def int16(min_value=INT16_MIN_VALUE, max_value=INT16_MAX_VALUE):
     """
-    Generate value for ROS builtin message type "int16".
+    Generate value for ROS1 builtin message type "int16".
 
     Parameters
     ----------
@@ -163,7 +163,7 @@ def int16(min_value=INT16_MIN_VALUE, max_value=INT16_MAX_VALUE):
 @defines_strategy
 def uint16(min_value=UINT16_MIN_VALUE, max_value=UINT16_MAX_VALUE):
     """
-    Generate value for ROS builtin message type "uint16".
+    Generate value for ROS1 builtin message type "uint16".
 
     Parameters
     ----------
@@ -185,7 +185,7 @@ def uint16(min_value=UINT16_MIN_VALUE, max_value=UINT16_MAX_VALUE):
 @defines_strategy
 def int32(min_value=INT32_MIN_VALUE, max_value=INT32_MAX_VALUE):
     """
-    Generate value for ROS builtin message type "int32".
+    Generate value for ROS1 builtin message type "int32".
 
     Parameters
     ----------
@@ -207,7 +207,7 @@ def int32(min_value=INT32_MIN_VALUE, max_value=INT32_MAX_VALUE):
 @defines_strategy
 def uint32(min_value=UINT32_MIN_VALUE, max_value=UINT32_MAX_VALUE):
     """
-    Generate value for ROS builtin message type "uint32".
+    Generate value for ROS1 builtin message type "uint32".
 
     Parameters
     ----------
@@ -229,7 +229,7 @@ def uint32(min_value=UINT32_MIN_VALUE, max_value=UINT32_MAX_VALUE):
 @defines_strategy
 def int64(min_value=INT64_MIN_VALUE, max_value=INT64_MAX_VALUE):
     """
-    Generate value for ROS builtin message type "int64".
+    Generate value for ROS1 builtin message type "int64".
 
     Parameters
     ----------
@@ -251,7 +251,7 @@ def int64(min_value=INT64_MIN_VALUE, max_value=INT64_MAX_VALUE):
 @defines_strategy
 def uint64(min_value=UINT64_MIN_VALUE, max_value=UINT64_MAX_VALUE):
     """
-    Generate value for ROS builtin message type "uint64".
+    Generate value for ROS1 builtin message type "uint64".
 
     Parameters
     ----------
@@ -274,7 +274,7 @@ def uint64(min_value=UINT64_MIN_VALUE, max_value=UINT64_MAX_VALUE):
 def float32(min_value=FLOAT32_MIN_VALUE, max_value=FLOAT32_MAX_VALUE,
             allow_nan=False, allow_infinity=False):
     """
-    Generate value for ROS builtin message type "float32".
+    Generate value for ROS1 builtin message type "float32".
 
     TODO: Map Hypothesis values to YAML [.inf, -.Inf, .NAN].
           http://www.yaml.org/refcard.html
@@ -304,7 +304,7 @@ def float32(min_value=FLOAT32_MIN_VALUE, max_value=FLOAT32_MAX_VALUE,
 def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE,
             allow_nan=False, allow_infinity=False):
     """
-    Generate value for ROS builtin message type "float64".
+    Generate value for ROS1 builtin message type "float64".
 
     TODO: Map Hypothesis values to YAML [.inf, -.Inf, .NAN].
           http://www.yaml.org/refcard.html
@@ -333,7 +333,7 @@ def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE,
 @defines_strategy
 def string(min_size=STRING_MIN_SIZE, max_size=STRING_MAX_SIZE):
     """
-    Generate value for ROS builtin message type "string".
+    Generate value for ROS1 builtin message type "string".
 
     Parameters
     ----------
@@ -356,7 +356,7 @@ def string(min_size=STRING_MIN_SIZE, max_size=STRING_MAX_SIZE):
 @composite
 def time(draw, secs=uint32(), nsecs=uint32()):
     """
-    Generate value for ROS builtin message type "time".
+    Generate value for ROS1 builtin message type "time".
 
     Parameters
     ----------
@@ -380,7 +380,7 @@ def time(draw, secs=uint32(), nsecs=uint32()):
 @composite
 def duration(draw, secs=int32(), nsecs=int32()):
     """
-    Generate value for ROS builtin message type "duration".
+    Generate value for ROS1 builtin message type "duration".
 
     Parameters
     ----------
@@ -404,7 +404,7 @@ def duration(draw, secs=int32(), nsecs=int32()):
 @defines_strategy
 def array(elements=None, min_size=None, max_size=None, unique_by=None, unique=None):
     """
-    Generate variable length array with ROS builtin message types as elements.
+    Generate variable length array with ROS1 builtin message types as elements.
     To generate a fixed length array define `min_size == max_size`.
 
     TODO: Assert that strategy for elements is from supported strategies.

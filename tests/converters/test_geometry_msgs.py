@@ -26,7 +26,7 @@ try:
         TransformStamped,
     )
 except ImportError:
-    raise ImportError('Please install ROS package ros-{DISTRO}-common-msgs.')
+    raise ImportError('Please install ROS1 package ros-{DISTRO}-common-msgs.')
 import pytest
 
 

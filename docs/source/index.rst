@@ -1,7 +1,7 @@
 hypothesis-ros
 ==============
 
-Data generators for Property Based Testing and Fuzzy Testing of ROS nodes.
+Data generators for Property Based Testing and Fuzzy Testing of ROS1 nodes.
 
 .. image:: https://img.shields.io/pypi/wheel/hypothesis-ros.svg
     :target: https://pypi.org/project/hypothesis-ros/
@@ -14,7 +14,7 @@ Data generators for Property Based Testing and Fuzzy Testing of ROS nodes.
 
 `hypothesis-ros` looks small and cute. But it is one of those libraries on the dark side of power.
 It can be very powerful and very nasty. It enables property-based testing
-on the ROS node level. It provides generators for message data fields, parameters
+on the ROS1 node level. It provides generators for message data fields, parameters
 and message fields of a growing number of messages.
 
 `hypothesis-ros` depends on property based testing framework `hypothesis`_.
@@ -23,8 +23,8 @@ The documentation for this library can be found in the `hypothesis documentation
 .. _hypothesis: https://github.com/HypothesisWorks/hypothesis
 .. _hypothesis documentation: https://hypothesis.readthedocs.io/en/latest/index.html
 
-The naming of strategies is according to ROS notation to ease the mapping of the strategies
-to the corresponding ROS data types, messages and parameters. Consider that this implies
+The naming of strategies is according to ROS1 notation to ease the mapping of the strategies
+to the corresponding ROS1 data types, messages and parameters. Consider that this implies
 some conflict with Python builtins (e.g. `bool`, `list`).
 
 The User's Guide

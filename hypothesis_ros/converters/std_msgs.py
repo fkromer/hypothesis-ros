@@ -9,7 +9,7 @@ from hypothesis_ros.messages.std_msgs import _Header
 try:
     from std_msgs.msg import Header
 except ImportError:
-    raise ImportError('Please install ROS package ros-{ROS-DISTRO}-common-msgs.')
+    raise ImportError('Please install ROS1 package ros-{ROS-DISTRO}-common-msgs.')
 
 
 def map_header(values):

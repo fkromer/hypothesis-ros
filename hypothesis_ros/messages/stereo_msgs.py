@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 """
-Provides hypothesis strategies for `ROS stereo_msgs`_.
+Provides hypothesis strategies for `ROS1 stereo_msgs`_.
 
-.. _ROS stereo_msgs:
+.. _ROS1 stereo_msgs:
    http://wiki.ros.org/stereo_msgs
 
 """
@@ -26,7 +26,7 @@ _DisparityImage = namedtuple('DisparityImage', 'header image f T valid_window mi
 @composite
 def disparity_image(draw, header=header(), image=image(), f=float32(), t=float32(), valid_window=region_of_interest(), min_disparity=float32(), max_disparity=float32(), delta_d=float32()):
     """
-    Generate value for ROS DisparityImage.msg.
+    Generate value for ROS1 DisparityImage.msg.
 
     Parameters
     ----------

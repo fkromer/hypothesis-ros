@@ -87,7 +87,7 @@ html_theme = 'alabaster'
 html_theme_options = {
     'logo': 'logo_full.jpg',
     'logo_name': 'hypothesis-ros',
-    'description': 'Data generators for Property Based Testing and Fuzzy Testing of ROS nodes.',
+    'description': 'Data generators for Property Based Testing and Fuzzy Testing of ROS1 nodes.',
     'github_user': 'ros-testing',
     'github_repo': 'hypothesis-ros',
     'github_type': 'star',

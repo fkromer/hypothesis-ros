@@ -7,7 +7,7 @@ from hypothesis_ros.messages.sensor_msgs import (
 try:
     from sensor_msgs.msg import Image, Imu
 except ImportError:
-    raise ImportError('Please install ROS package ros-{ROS-DISTRO}-common-msgs.')
+    raise ImportError('Please install ROS1 package ros-{ROS-DISTRO}-common-msgs.')
 
 
 def map_imu(values):

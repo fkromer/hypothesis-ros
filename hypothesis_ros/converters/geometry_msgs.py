@@ -25,7 +25,7 @@ try:
         Vector3,
     )
 except ImportError:
-    raise ImportError('Please install ROS package ros-{ROS-DISTRO}-common-msgs.')
+    raise ImportError('Please install ROS1 package ros-{ROS-DISTRO}-common-msgs.')
 
 
 def map_point(values):
