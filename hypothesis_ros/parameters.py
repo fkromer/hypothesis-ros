@@ -15,7 +15,7 @@ from hypothesis.strategies import (
     lists,
     floats
 )
-from hypothesis_ros.message_fields import int32, string, bool, array as list
+from hypothesis_ros.message_fields import int32, string, bool, array as list  # pylint: disable=redefined-builtin
 
 __all__ = ['int32', 'string', 'bool', 'list']
 """Make strategies from hypothesis_ros.message_fields available in this module."""
@@ -54,7 +54,7 @@ def date(min_value=DATE_MIN_VALUE, max_value=DATE_MAX_VALUE):
 
 @defines_strategy
 def double(min_value=DOUBLE_MIN_VALUE, max_value=DOUBLE_MAX_VALUE,
-            allow_nan=False, allow_infinity=False):
+           allow_nan=False, allow_infinity=False):
     """
     Generate value for ROS1 paramter type "double".
 

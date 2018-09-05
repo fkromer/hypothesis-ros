@@ -112,7 +112,7 @@ def int8(min_value=INT8_MIN_VALUE, max_value=INT8_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
-    if not (INT8_MIN_VALUE <= min_value <= max_value <= INT8_MAX_VALUE): raise InvalidArgument
+    if not INT8_MIN_VALUE <= min_value <= max_value <= INT8_MAX_VALUE: raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -134,7 +134,7 @@ def uint8(min_value=UINT8_MIN_VALUE, max_value=UINT8_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
-    if not (UINT8_MIN_VALUE <= min_value <= max_value <= UINT8_MAX_VALUE): raise InvalidArgument
+    if not UINT8_MIN_VALUE <= min_value <= max_value <= UINT8_MAX_VALUE: raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -156,7 +156,7 @@ def int16(min_value=INT16_MIN_VALUE, max_value=INT16_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
-    if not (INT16_MIN_VALUE <= min_value <= max_value <= INT16_MAX_VALUE): raise InvalidArgument
+    if not INT16_MIN_VALUE <= min_value <= max_value <= INT16_MAX_VALUE: raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -178,7 +178,7 @@ def uint16(min_value=UINT16_MIN_VALUE, max_value=UINT16_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
-    if not (UINT16_MIN_VALUE <= min_value <= max_value <= UINT16_MAX_VALUE): raise InvalidArgument
+    if not UINT16_MIN_VALUE <= min_value <= max_value <= UINT16_MAX_VALUE: raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -200,7 +200,7 @@ def int32(min_value=INT32_MIN_VALUE, max_value=INT32_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
-    if not (INT32_MIN_VALUE <= min_value <= max_value <= INT32_MAX_VALUE): raise InvalidArgument
+    if not INT32_MIN_VALUE <= min_value <= max_value <= INT32_MAX_VALUE: raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -222,7 +222,7 @@ def uint32(min_value=UINT32_MIN_VALUE, max_value=UINT32_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
-    if not (UINT32_MIN_VALUE <= min_value <= max_value <= UINT32_MAX_VALUE): raise InvalidArgument
+    if not UINT32_MIN_VALUE <= min_value <= max_value <= UINT32_MAX_VALUE: raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -244,7 +244,7 @@ def int64(min_value=INT64_MIN_VALUE, max_value=INT64_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
-    if not (INT64_MIN_VALUE <= min_value <= max_value <= INT64_MAX_VALUE): raise InvalidArgument
+    if not INT64_MIN_VALUE <= min_value <= max_value <= INT64_MAX_VALUE: raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -266,7 +266,7 @@ def uint64(min_value=UINT64_MIN_VALUE, max_value=UINT64_MAX_VALUE):
         Strategy with preconfigured default values.
 
     """
-    if not (UINT64_MIN_VALUE <= min_value <= max_value <= UINT64_MAX_VALUE): raise InvalidArgument
+    if not UINT64_MIN_VALUE <= min_value <= max_value <= UINT64_MAX_VALUE: raise InvalidArgument
     return integers(min_value, max_value)
 
 
@@ -296,7 +296,6 @@ def float32(min_value=FLOAT32_MIN_VALUE, max_value=FLOAT32_MAX_VALUE,
         Strategy with preconfigured default values.
 
     """
-    # TODO
     return floats(min_value, max_value, allow_nan, allow_infinity)
 
 
@@ -326,7 +325,6 @@ def float64(min_value=FLOAT64_MIN_VALUE, max_value=FLOAT64_MAX_VALUE,
         Strategy with preconfigured default values.
 
     """
-    # TODO
     return floats(min_value, max_value, allow_nan, allow_infinity)
 
 
@@ -348,7 +346,7 @@ def string(min_size=STRING_MIN_SIZE, max_size=STRING_MAX_SIZE):
         Strategy with preconfigured default values.
 
     """
-    if not (STRING_MIN_SIZE <= min_size <= max_size <= STRING_MAX_SIZE): raise InvalidArgument
+    if not STRING_MIN_SIZE <= min_size <= max_size <= STRING_MAX_SIZE: raise InvalidArgument
     # average_size parameter is deprecated
     return binary(min_size=min_size, max_size=max_size)
 
@@ -367,7 +365,7 @@ def time(draw, secs=uint32(), nsecs=uint32()):
 
     Returns
     -------
-    _Time()  # TODO :class:`hypothesis_ros.message_fields._Time()`
+    :class:`hypothesis_ros.message_fields.Time()`
         Strategy with preconfigured default values.
 
     """
@@ -391,7 +389,7 @@ def duration(draw, secs=int32(), nsecs=int32()):
 
     Returns
     -------
-    _Duration()
+    :class:`hypothesis_ros.message_fields.Duration()`
         Namedtuple with drawn values for secs and nsecs.
 
     """
@@ -425,11 +423,11 @@ def array(elements=None, min_size=None, max_size=None, unique_by=None, unique=No
 
     Returns
     -------
-    list
+    :func:`hypothesis.strategies.lists()`
         A variable or fixed length array containing values drawn from elements with
         length in the interval [min_size, max_size] (no bounds in that direction
         if these are None).
 
     """
-    if not (min_size <= max_size): raise InvalidArgument
+    if not min_size <= max_size: raise InvalidArgument
     return lists(elements=elements, min_size=min_size, max_size=max_size, unique_by=unique_by, unique=unique)

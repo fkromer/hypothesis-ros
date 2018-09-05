@@ -14,6 +14,7 @@ from hypothesis_ros.messages.geometry_msgs import (
     _Vector3,
 )
 from hypothesis_ros.messages.std_msgs import _Header
+from hypothesis_ros.converters.std_msgs import map_header
 
 try:
     from geometry_msgs.msg import (
