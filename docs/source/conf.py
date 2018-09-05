@@ -93,6 +93,7 @@ html_theme_options = {
     'github_type': 'star',
     'github_count': 'true',
     'github_banner': 'true',
+    'show_relbar_bottom': 'true',
 }
 
 # Add any paths that contain custom static files (such as style sheets) here,

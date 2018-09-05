@@ -3,8 +3,19 @@
 User's Guide
 ============
 
+This section is about configuration, integration and usage considerations.
+
+.. _tests directory of the package source code repository: https://github.com/ros-testing/hypothesis-ros/tree/master/tests
+
+Usage
+-----
+
+The examples give a first (very limited) overview how to use `hypothesis-ros`.
+For further information about how to use the data generators of this package refer
+to the API documentation and the `tests directory of the package source code repository`_.
+
 Minimal Example
----------------
+...............
 
 .. code-block:: bash
 
@@ -18,7 +29,7 @@ Minimal Example
 
 
 Jupyter Notebook Examples
--------------------------
+.........................
 
 .. code-block:: bash
 
@@ -26,17 +37,31 @@ Jupyter Notebook Examples
     ❯ cd docs/source/notebooks/
     ❯ jupyter lab
 
-Compatibility with Python interpreters
---------------------------------------
+Compatibility
+-------------
+
+The ROS1 test infrastructure is limited w.r.t. integration of test tools into the build tooling.
+The recommended way to integrate `hypothesis-ros` with ROS1 is by implementing a container level
+test framework. `pytest`_ and `nose2`_ (no "prove in use") are suitable test runner choices. `docker`_,
+the `official ROS1 docker images`_ and `docker-py`_ may be used to provide the ROS1 node "runtime environment".
+
+.. _pytest: https://docs.pytest.org/en/latest/
+.. _nose2: https://nose2.readthedocs.io/en/latest/index.html
+.. _docker: https://www.docker.com/
+.. _official ROS1 docker images: https://hub.docker.com/_/ros/
+.. _docker-py: https://docker-py.readthedocs.io/en/stable/
+
+Python interpreters
+...................
 
 `hypothesis-ros` uses `hypothesis` which implies the compatibility with Python interpreters.
 Hypothesis is supported and tested on CPython 2.7 and CPython 3.4+ (`hypothesis docs python versions`_).
-However `hypothesis-ros` is only tested against the main ROS1 Python v2.7.
+However `hypothesis-ros` is only tested against the main ROS1 Python version v2.7.
 
 .. _hypothesis docs python versions: https://hypothesis.readthedocs.io/en/latest/supported.html#python-versions
 
-Compatibility with Python test frameworks (test runners)
---------------------------------------------------------
+Python test frameworks (test runners)
+.....................................
 
 `hypothesis-ros` uses `hypothesis` which implies the compatibility with Python test frameworks.
 Hypothesis is compatible with
@@ -49,8 +74,11 @@ Hypothesis is compatible with
 
 .. _hypothesis docs testing frameworks: https://hypothesis.readthedocs.io/en/latest/supported.html#testing-frameworks
 
-Configuration of settings
--------------------------
+Configuration
+-------------
+
+hypothesis settings
+...................
 
 `hypothesis` was initially designed for Python source code level testing.
 Therefore the configuration of `settings` needs special care.
@@ -87,8 +115,8 @@ usually don't need special consideration and may be used as usual.
 
 .. _Configuration of health checks:
 
-Configuration of health checks
-------------------------------
+hypothesis health checks
+........................
 
 `hypothesis` was initially designed for Python source code level testing.
 Therefore the configuration of `health checks` (`hypothesis docs health checks`_)
@@ -116,11 +144,11 @@ A typical configuration of `suppress_health_check` in `@settings` looks like fol
 The health checks `data_too_large`, `filter_too_much`, `return_value` and `large_base_example`
 don't need special consideration and may be used as usual.
 
-Configuration of example database
----------------------------------
+hypothesis example database
+...........................
 
-If a test fails hypothesis saves the test input in a atabase.
-The next time hypothesis runs this conditions will be used first.
+If a test fails `hypothesis` saves the test input in a atabase.
+The next time `hypothesis` runs this conditions will be used first.
 The configuration of the example database may be adjusted as usual
 (`hypothesis docs example database`_).
 
