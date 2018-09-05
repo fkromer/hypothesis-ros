@@ -3,6 +3,29 @@
 Changelog
 =========
 
+v1.0.0
+------
+
+- add rospy converters for std_msgs Header
+- add rospy converters for geometry_msgs
+
+ - Point
+ - Quaternion
+ - Pose
+ - Transform
+ - TransformStamped
+ - Vector3
+
+- add rospy converters for sensor_msgs
+
+ - Imu
+ - Image
+
+- fix typo in geometry_msgs _TransformStamped
+- add test coverage analysis
+- add CI tool integration
+- add source code docs
+
 v0.3.0
 ------
 
