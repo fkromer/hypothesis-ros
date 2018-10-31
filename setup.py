@@ -23,6 +23,7 @@ setup(
     test_requires=test_requires,
     classifiers=[
         'Development Status :: 4 - Beta',
+        'Framework :: Hypothesis',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
