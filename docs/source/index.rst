@@ -12,10 +12,11 @@ Data generators for Property Based Testing and Fuzzy Testing of ROS1 nodes.
 .. image:: https://img.shields.io/pypi/l/hypothesis-ros.svg
     :target: https://pypi.org/project/hypothesis-ros/
 
-`hypothesis-ros` looks small and cute. But it is one of those libraries on the dark side of power.
-It can be very powerful and very nasty. It enables property-based testing
-on the ROS1 node level. It provides generators for message data fields, parameters
-and message fields of a growing number of messages.
+`hypothesis-ros` provides data generators for message data fields, parameters and common message
+fields of the Robot Operating System 1 (`ROS`_). `hypothesis-ros` enables Property Based Testing
+and Fuzzy Testing of ROS1 nodes.
+
+.. _ROS: http://www.ros.org/
 
 `hypothesis-ros` depends on the property based testing framework `hypothesis`_.
 The documentation for this library can be found in the `hypothesis documentation`_.
