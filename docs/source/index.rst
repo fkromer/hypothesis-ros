@@ -12,6 +12,11 @@ Data generators for Property Based Testing and Fuzzy Testing of ROS1 nodes.
 .. image:: https://img.shields.io/pypi/l/hypothesis-ros.svg
     :target: https://pypi.org/project/hypothesis-ros/
 
+.. warning::
+    This repository is unmaintained and has been archived. Refer to `ros1_fuzzer`_ instead.
+
+.. _ros1_fuzzer: https://github.com/aliasrobotics/ros1_fuzzer
+
 `hypothesis-ros` provides data generators for message data fields, parameters and common message
 fields of the Robot Operating System 1 (`ROS`_). `hypothesis-ros` enables Property Based Testing
 and Fuzzy Testing of ROS1 nodes.
