@@ -13,6 +13,11 @@
 
 Data generators for Property Based Testing and Fuzzy Testing of ROS1 nodes.
 
+## Project status
+
+This repository is unmaintained and has been archived. Refer to
+[ros1_fuzzer](https://github.com/aliasrobotics/ros1_fuzzer) instead.
+
 ## Installation
 
     ❯ pip install hypothesis-ros
